@@ -1,22 +1,28 @@
-function sum(number) {
+var arrFibo = fibonacciArray(10);
+console.log(arrFibo);
+var result = 0;
+arrFibo.forEach(function (element) { return result += element; });
+console.log("sum of fibonacci array: " + result);
+function fibonacciArray(number) {
     var number1 = 0;
     var number2 = 1;
     var temp;
-    var result = number1 + number2;
-    if (number <= 0) {
-        result = 0;
-    }
-    else if ((number == 1 || number == 2)) {
-        result = 1;
-    }
-    var count = 2;
+    var arr = [];
+    var count = 0;
     while (count < number) {
-        temp = number1 + number2;
-        number1 = number2;
-        number2 = temp;
-        result += temp;
+        if (count == 0) {
+            arr.push(number1);
+        }
+        else if (count == 1) {
+            arr.push(number2);
+        }
+        else {
+            temp = number1 + number2;
+            number1 = number2;
+            number2 = temp;
+            arr.push(temp);
+        }
         count++;
     }
-    return result;
+    return arr;
 }
-console.log(sum(8));
