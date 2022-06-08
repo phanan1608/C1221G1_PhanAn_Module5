@@ -1,0 +1,63 @@
+<html>
+<head>
+  <!-- for styling -->
+  <style>
+    input[type="button"] {
+      background-color: #5b7faa;
+      color: white;
+      width: 100px;
+      height: 50px;
+      border: none;
+    }
+
+    input[type="text"] {
+      background-color: white;
+      border: none;
+
+      width: 400px;
+      height: 50px;
+      width: 100%
+    }
+  </style>
+</head>
+<!-- create table -->
+<body>
+<h1>calculator works!</h1>
+<table border="1">
+  <tr>
+    <td colspan="4"><input type="text"/>{{input}}</td>
+  </tr>
+  <tr>
+    <td colspan="3"><input type="text"/>{{result}}</td>
+    <td><input type="button" value="c" (click)="clear()"/> </td>
+  </tr>
+  <tr>
+    <!-- create button and assign value to each button -->
+    <!-- addValue("1") will call function addValue to display value -->
+    <td><input type="button" value="1" (click)="addValue('1')"/></td>
+    <td><input type="button" value="2" (click)="addValue('2')"/></td>
+    <td><input type="button" value="3" (click)="addValue('3')"/></td>
+    <td><input type="button" value="/" (click)="addValue('/')"/></td>
+  </tr>
+  <tr>
+    <td><input type="button" value="4" (click)="addValue('4')"/></td>
+    <td><input type="button" value="5" (click)="addValue('5')"/></td>
+    <td><input type="button" value="6" (click)="addValue('6')"/></td>
+    <td><input type="button" value="-" (click)="addValue('-')"/></td>
+  </tr>
+  <tr>
+    <td><input type="button" value="7" (click)="addValue('7')"/></td>
+    <td><input type="button" value="8" (click)="addValue('8')"/></td>
+    <td><input type="button" value="9" (click)="addValue('9')"/></td>
+    <td><input type="button" value="+" (click)="addValue('+')"/></td>
+  </tr>
+  <tr>
+    <td><input type="button" value="." (click)="addValue('.')"/></td>
+    <td><input type="button" value="0" (click)="addValue('0')"/></td>
+    <!-- result function call function result to evaluate value -->
+    <td><input type="button" value="=" (click)="sovle()"/></td>
+    <td><input type="button" value="*" (click)="addValue('*')"/></td>
+  </tr>
+</table>
+</body>
+</html>

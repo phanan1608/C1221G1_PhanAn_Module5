@@ -1,0 +1,7 @@
+<h1>Change color</h1>
+<input type="button" value="red" (click)="changeColor($event.target.value)">
+<input type="button" value="yellow" (click)="changeColor($event.target.value)"/>
+<input type="button" value="blue" (click)="changeColor($event.target.value)"/>
+<input type="button" value="black" (click)="changeColor($event.target.value)">
+
+<h2 [style.color]="color">THIS IS TEXT</h2>
