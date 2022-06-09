@@ -43,19 +43,19 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
           <ul class="nav navbar-nav menu_nav">
-            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="facility-list.html">Facility</a></li>
-            <li class="nav-item"><a class="nav-link" href="customer-list.html">Customer</a></li>
-            <li class="nav-item"><a class="nav-link" href="contract-list.html">Contract</a></li>
+            <li class="nav-item" [routerLinkActive]="'active'"><a class="nav-link" [routerLink]="['/index']" >Home</a></li>
+            <li class="nav-item" [routerLinkActive]="'active'"><a class="nav-link" [routerLink]="['/about']" >About</a></li>
+            <li class="nav-item" [routerLinkActive]="'active'"><a class="nav-link" [routerLink]="['/facility-list']" >Facility</a></li>
+            <li class="nav-item" [routerLinkActive]="'active'"><a class="nav-link" [routerLink]="['/customer-list']" >Customer</a></li>
+            <li class="nav-item" [routerLinkActive]="'active'"><a class="nav-link" [routerLink]="['/contract-list']" >Contract</a></li>
             <li class="nav-item submenu dropdown">
               <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
                  data-toggle="dropdown"
                  href="#"
                  role="button">Blog</a>
               <ul class="dropdown-menu">
-                <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                <li class="nav-item"><a class="nav-link" href="blog-single.html">Blog Details</a></li>
+                <li class="nav-item" [routerLinkActive]="'active'"><a class="nav-link" [routerLink]="['/blog']">Blog</a></li>
+                <li class="nav-item" [routerLinkActive]="'active'"><a class="nav-link" [routerLink]="['/index']">Blog Details</a></li>
               </ul>
             </li>
           </ul>

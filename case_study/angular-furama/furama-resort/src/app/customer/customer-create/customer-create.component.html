@@ -9,7 +9,7 @@
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li aria-current="page" class="breadcrumb-item active">Create Customer</li>
           </ol>
-          <a href="customer-list.html">Back Customer List</a>
+          <a [routerLink]="['/customer-list']">Back Customer List</a>
         </nav>
       </div>
     </div>
@@ -34,8 +34,7 @@
         </div>
       </div>
       <div class="col-lg-3  gutters-19">
-        <div class="form-group">
-          <div class="form-select-custom">
+        <div class="form-group form-select-custom">
             <select id="" name="gender">
               <option disabled selected value="">Gender</option>
               <option value="0">Female</option>
@@ -43,7 +42,6 @@
               <option value="2">Other</option>
             </select>
           </div>
-        </div>
       </div>
     </div>
     <div class="row">
@@ -77,8 +75,7 @@
         </div>
       </div>
       <div class="col-lg-3  gutters-19">
-        <div class="form-group">
-          <div class="form-select-custom">
+          <div class="form-group form-select-custom">
             <select id="" name="customer-type">
               <option disabled selected value="">Customer Type</option>
               <option value="1">Diamond</option>
@@ -87,7 +84,6 @@
               <option value="4">Silver</option>
               <option value="5">Normal</option>
             </select>
-          </div>
         </div>
       </div>
     </div>
@@ -98,7 +94,7 @@
       </div>
       <div class="col-6">
 
-        <a href="customer-list.html" class="button button--cancel cancel-banner-btn text-center col-12">Cancel</a>
+        <a [routerLink]="['/customer-list']" class="button button--cancel cancel-banner-btn text-center col-12">Cancel</a>
       </div>
     </div>
   </div>

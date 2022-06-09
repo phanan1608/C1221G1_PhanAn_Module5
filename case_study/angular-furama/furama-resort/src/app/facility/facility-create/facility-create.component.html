@@ -1,3 +1,5 @@
+
+
 <!-- ================ start banner area ================= -->
 <section class="contact-banner-area" id="contact">
   <div class="container h-100">
@@ -9,7 +11,7 @@
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li aria-current="page" class="breadcrumb-item active">Create Facilities</li>
           </ol>
-          <a href="facility-list.html">Back Facility List</a>
+          <a [routerLink]="['/facility-list']">Back Facility List</a>
         </nav>
       </div>
     </div>
@@ -44,21 +46,18 @@
     </div>
     <div class="row">
       <div class="col-sm gutters-19">
-        <div class="form-group">
-          <div class="form-select-custom">
-            <select id="" name="rent-type">
+        <div class="form-group form-select-custom">
+            <select name="rent-type">
               <option disabled selected value="">Rent Type</option>
               <option value="1">Hour</option>
               <option value="2">Day</option>
               <option value="3">Month</option>
               <option value="4">Year</option>
             </select>
-          </div>
         </div>
       </div>
       <div class="col-sm gutters-19">
-        <div class="form-group">
-          <div class="form-select-custom">
+          <div class="form-group form-select-custom">
             <select id="" name="stardard">
               <option disabled selected value="">Standard</option>
               <option value="1">Normal</option>
@@ -66,7 +65,6 @@
               <option value="3">President</option>
             </select>
           </div>
-        </div>
       </div>
       <div class="col-lg-4 gutters-19">
         <div class="form-group">
@@ -74,9 +72,9 @@
         </div>
       </div>
       <div class="col-sm gutters-19">
-        <div class="form-group">
+        <div class="form-group form-select-custom">
           <select id="facility_select" name="facility-type">
-            <option disabled selected value="">Rent Type</option>
+            <option disabled selected value="">Service Type</option>
             <option value="1">Room</option>
             <option value="2">House</option>
             <option value="3">Villa</option>
@@ -127,8 +125,7 @@
           <button class="button button--active button-form" type="submit">Save</button>
         </div>
         <div class="col-6">
-
-          <a href="" class="button button--cancel cancel-banner-btn text-center col-12">Cancel</a>
+          <a [routerLink]="['/facility-list']" class="button button--cancel cancel-banner-btn text-center col-12">Cancel</a>
         </div>
       </div>
     </div>
