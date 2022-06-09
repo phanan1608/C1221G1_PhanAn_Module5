@@ -1,0 +1,21 @@
+<div>
+  <h2>Article Information</h2>
+  <table>
+    <tr>
+      <td>Title:</td>
+      <td><textarea class="form-control" [(ngModel)]="article.title" cols="70"></textarea></td>
+    </tr>
+    <tr>
+      <td>Url:</td>
+      <td>
+        <textarea class="form-control" [(ngModel)]="article.url" cols="70"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button class="btn btn-success" style="float: right" (click)="addNewArticle()">Add</button>
+      </td>
+    </tr>
+  </table>
+</div>
