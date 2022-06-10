@@ -1,0 +1,13 @@
+<h1>Rating Bar</h1>
+<div>
+  {{ rating }}
+</div>
+<app-rating-bar (rateChange)="change($event)"></app-rating-bar>
+<hr>
+<h1>Countdown Timer</h1>
+<app-countdown-timer (finish)="count($event)"></app-countdown-timer>
+<div class="timer">
+  <span class="timer-text">{{countTime.remainingTime}}</span>
+</div>
+<p>{{countTime.message}}</p>
+

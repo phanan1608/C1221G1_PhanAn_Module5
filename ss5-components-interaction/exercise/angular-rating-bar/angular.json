@@ -1,9 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
+  "version": 1, 
   "newProjectRoot": "projects",
   "projects": {
-    "furama-resort": {
+    "angular-rating-bar": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/furama-resort",
+            "outputPath": "dist/angular-rating-bar",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,10 +24,9 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles.css"
             ],
-            "scripts": [
-
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -63,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "furama-resort:build"
+            "browserTarget": "angular-rating-bar:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "furama-resort:build:production"
+              "browserTarget": "angular-rating-bar:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "furama-resort:build"
+            "browserTarget": "angular-rating-bar:build"
           }
         },
         "test": {
@@ -111,16 +110,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "furama-resort:serve"
+            "devServerTarget": "angular-rating-bar:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "furama-resort:serve:production"
+              "devServerTarget": "angular-rating-bar:serve:production"
             }
           }
         }
       }
-    }
-  },
-  "defaultProject": "furama-resort"
+    }},
+  "defaultProject": "angular-rating-bar"
 }
