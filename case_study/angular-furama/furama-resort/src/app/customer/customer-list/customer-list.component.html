@@ -58,7 +58,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr *ngFor="let item of customers">
           <td>
 							<span class="custom-checkbox">
 								<input type="checkbox" id="checkbox1" name="options[]" value="1">
@@ -75,23 +75,24 @@
               />
               <div class="ml-3">
                 <a href="@{/customer/view/{id}(id=${customer.customerId})}">
-                  <p style="word-break: break-all;" class="fw-bold mb-1">Nguyễn Thị Hào</p>
+                  <p style="word-break: break-all;" class="fw-bold mb-1">{{item.name}}</p>
                 </a>
-                <p class="text-muted mb-0">KH-00001</p>
-                <span class="badge rounded-pill badge-primary">Diamond</span>
+                <p class="text-muted mb-0">{{item.code}}</p>
+                <span class="badge rounded-pill badge-primary">{{item.customerType.name}}</span>
 
 
               </div>
             </div>
           </td>
           <td>
-            <p class="fw-normal mb-1">0912123321</p>
-            <p class="text-muted mb-0">xyz@gmail.com    </p>
+            <p class="fw-normal mb-1">{{item.phone}}</p>
+            <p class="text-muted mb-0">{{item.email}}</p>
           </td>
-          <td>2022-11-11</td>
-          <td>Male</td>
-          <td>122233123</td>
-          <td>Da Nang</td>
+          <td>{{item.birthDay}}</td>
+          <td *ngIf="item.gender== 0 ">Female</td>
+          <td *ngIf="item.gender== 1 ">Male</td>
+          <td>{{item.idCard}}</td>
+          <td>{{item.address}}</td>
           <td>
             <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="ti-settings" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="ti-trash" data-toggle="tooltip" title="Delete">&#xE872;</i></a>

@@ -15,6 +15,8 @@ import { CustomerListComponent } from './customer/customer-list/customer-list.co
 import { CustomerCreateComponent } from './customer/customer-create/customer-create.component';
 import { FacilityListComponent } from './facility/facility-list/facility-list.component';
 import { FacilityCreateComponent } from './facility/facility-create/facility-create.component';
+import {HttpClientModule} from "@angular/common/http";
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { FacilityCreateComponent } from './facility/facility-create/facility-cre
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
