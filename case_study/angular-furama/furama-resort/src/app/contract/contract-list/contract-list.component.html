@@ -63,12 +63,12 @@
 							</span>
           </td>
           <td>{{item.id}}</td>
-          <td>{{item.startDate}}</td>
-          <td>{{item.endDate}}</td>
+          <td>{{item.startDate|date:"dd-MM-yyyy"}}</td>
+          <td>{{item.endDate|date:"dd-MM-yyyy"}}</td>
           <td>{{item.customer.name}}</td>
           <td>{{item.facility.name}}</td>
-          <td>{{item.deposit}}</td>
-          <td>{{item.totalMoney}}</td>
+          <td>{{item.deposit|number}}</td>
+          <td>{{item.totalMoney|number}}</td>
         </tr>
         </tbody>
       </table>

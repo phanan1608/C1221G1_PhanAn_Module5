@@ -13,6 +13,5 @@ export interface Facility {
   poolArea?:number;
   numberOfFloors?:number;
   rentType?:RentType;
-  facility?:FacilityType;
   facilityTypeId?:number
 }

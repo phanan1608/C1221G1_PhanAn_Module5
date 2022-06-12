@@ -6,7 +6,6 @@ export const contracts = [
     deposit: 0,
     totalMoney: 1000000,
     customer: {
-      id: 1,
       code: 'KH-0001',
       name: 'Nguyễn Thị Hào',
       birthDay: '1970-11-07',
@@ -15,6 +14,7 @@ export const contracts = [
       phone: '0905423362',
       email: 'thihao07@gmail.com',
       address: '23 Nguyễn Hoàng, Đà Nẵng',
+      image: "https://mdbootstrap.com/img/new/avatars/13.jpg",
       customerType: {
         id: 5,
         name: 'Member'
@@ -45,7 +45,6 @@ export const contracts = [
     deposit: 200000,
     totalMoney: 2000000,
     customer: {
-      id: 3,
       code: 'KH-0003',
       name: 'Trương Đình Nghệ',
       birthDay: '1990-02-27',
@@ -54,6 +53,7 @@ export const contracts = [
       phone: '0373213122',
       email: 'nghenhan2702@gmail.com',
       address: 'K323/12 Ông Ích Khiêm, Vinh',
+      image: "https://mdbootstrap.com/img/new/avatars/8.jpg",
       customerType: {
         id: 3,
         name: 'Gold'
@@ -84,7 +84,6 @@ export const contracts = [
     deposit: 100000,
     totalMoney: 1400000,
     customer: {
-      id: 5,
       code: 'KH-0005',
       name: 'Hoàng Trần Nhi Nhi',
       birthDay: '1995-12-09',
@@ -93,6 +92,7 @@ export const contracts = [
       phone: '0312345678',
       email: 'nhinhi123@gmail.com',
       address: '224 Lý Thái Tổ, Gia Lai',
+      image: "https://mdbootstrap.com/img/new/avatars/15.jpg",
       customerType: {
         id: 1,
         name: 'Diamond'
@@ -123,7 +123,6 @@ export const contracts = [
     deposit: 0,
     totalMoney: 100000,
     customer: {
-      id: 6,
       code: 'KH-0006',
       name: 'Tôn Nữ Mộc Châu',
       birthDay: '2005-12-06',
@@ -132,6 +131,7 @@ export const contracts = [
       phone: '0988888844',
       email: 'tonnuchau@gmail.com',
       address: '23 Nguyễn Hoàng, Đà Nẵng',
+      image: "https://mdbootstrap.com/img/new/avatars/9.jpg",
       customerType: {
         id: 5,
         name: 'Member'

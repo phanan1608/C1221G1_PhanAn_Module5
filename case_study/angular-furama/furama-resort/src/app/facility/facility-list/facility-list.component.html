@@ -34,7 +34,7 @@
             <div class="form-group">
               <div class="form-select-custom">
                 <select id="" name="">
-                  <option disabled selected value="">Arrival</option>
+                  <option disabled value="">Arrival</option>
                   <option value="8 AM">8 AM</option>
                   <option value="12 PM">12 PM</option>
                 </select>
@@ -44,8 +44,8 @@
           <div class="col-sm gutters-19">
             <div class="form-group">
               <div class="form-select-custom">
-                <select id="" name="">
-                  <option disabled selected value="">Number of room</option>
+                <select class="" id="" name="">
+                  <option disabled value="">Number of room</option>
                   <option value="8 AM">8 AM</option>
                   <option value="12 PM">12 PM</option>
                 </select>
@@ -60,7 +60,7 @@
         <div class="form-group">
           <div class="form-select-custom">
             <select id="" name="">
-              <option disabled selected value="">Departure</option>
+              <option disabled value="">Departure</option>
               <option value="8 AM">8 AM</option>
               <option value="12 PM">12 PM</option>
             </select>
@@ -71,7 +71,7 @@
         <div class="form-group">
           <div class="form-select-custom">
             <select id="" name="">
-              <option disabled selected value="">Adult</option>
+              <option disabled  value="">Adult</option>
               <option value="8 AM">8 AM</option>
               <option value="12 PM">12 PM</option>
             </select>
@@ -82,7 +82,7 @@
         <div class="form-group">
           <div class="form-select-custom">
             <select id="" name="">
-              <option disabled selected value="">Child</option>
+              <option disabled  value="">Child</option>
               <option value="8 AM">8 AM</option>
               <option value="12 PM">12 PM</option>
             </select>
@@ -127,7 +127,7 @@
             <div class="card-body">
               <h3 class="card-explore__price">${{item.cost}} <sub>/ Per Night</sub></h3>
               <div class="d-flex justify-content-between align-items-center">
-                <h4 class="card-explore__title"><a href="#">{{item.name}}</a></h4>
+                <h4 class="card-explore__title"><a [routerLink]="['/facility-detail']">{{item.name}}</a></h4>
                 <div class="dropout d-flex align-items-center">
                   <button class="more">
                     <span></span>
@@ -152,7 +152,7 @@
 
               <p>Beginning fourth dominion creeping god was. Beginning, which fly yieldi dry beast moved
                 blessed </p>
-              <a class="card-explore__link" href="#">Book Now <i class="ti-arrow-right"></i></a>
+              <a class="card-explore__link" [routerLink]="['/facility-detail']">Book Now <i class="ti-arrow-right"></i></a>
             </div>
 
           </div>

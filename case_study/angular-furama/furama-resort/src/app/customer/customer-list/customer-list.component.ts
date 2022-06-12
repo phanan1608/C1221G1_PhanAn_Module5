@@ -10,20 +10,14 @@ import {CustomerType} from "../../model/customer-type";
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-  customers:Customer[];
-  customerTypes:CustomerType[];
-
   constructor(private customerService:CustomerService, private customerTypeService:CustomerTypeService) { }
 
+  customers:Customer[] =this.customerService.getListCustomer();
+
+  customerTypes:CustomerType[] = this.customerTypeService.getListCustomerType();
+
   ngOnInit(): void {
-    this.getListCustomer();
-    this.getListCustomerType()
   }
-  private getListCustomer(){
-    this.customers = this.customerService.getListCustomer();
-  }
-  private getListCustomerType(){
-    this.customerTypes = this.customerTypeService.getListCustomerType();
-  }
+
 
 }

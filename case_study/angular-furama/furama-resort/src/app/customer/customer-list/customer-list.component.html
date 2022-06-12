@@ -68,7 +68,7 @@
           <td>
             <div class="d-flex align-items-center">
               <img
-                src="https://mdbootstrap.com/img/new/avatars/13.jpg"
+                [src]="item.image"
                 alt=""
                 style="width: 45px; height: 45px"
                 class="rounded-circle"
@@ -78,9 +78,7 @@
                   <p style="word-break: break-all;" class="fw-bold mb-1">{{item.name}}</p>
                 </a>
                 <p class="text-muted mb-0">{{item.code}}</p>
-                <span class="badge rounded-pill badge-primary">{{item.customerType.name}}</span>
-
-
+                <span class="badge rounded-pill badge-primary" style="background-color: #cca772">{{item.customerType.name}}</span>
               </div>
             </div>
           </td>
@@ -88,7 +86,7 @@
             <p class="fw-normal mb-1">{{item.phone}}</p>
             <p class="text-muted mb-0">{{item.email}}</p>
           </td>
-          <td>{{item.birthDay}}</td>
+          <td>{{item.birthDay|date:"dd-MM- yyyy"}}</td>
           <td *ngIf="item.gender== 0 ">Female</td>
           <td *ngIf="item.gender== 1 ">Male</td>
           <td>{{item.idCard}}</td>

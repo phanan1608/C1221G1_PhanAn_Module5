@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {facilities} from "../../../assets/data/facility";
 import {Facility} from "../../model/facility";
 import {FacilityService} from "../../service/facility-service";
+
+declare let threeDotForFacility: any;
+declare let niceSelect: any;
 
 @Component({
   selector: 'app-facility-list',
@@ -9,17 +11,15 @@ import {FacilityService} from "../../service/facility-service";
   styleUrls: ['./facility-list.component.css']
 })
 export class FacilityListComponent implements OnInit {
-  facilities: Facility[];
+  facilities: Facility[]= this.facilityService.getFacilityList();
 
   constructor(private facilityService: FacilityService) { }
 
 
   ngOnInit(): void {
-    this.getFacilityLits()
+    new threeDotForFacility();
+    // new niceSelect();
   }
 
-  private getFacilityLits(){
-    this.facilities = this.facilityService.getFacilityList()
-  }
 
 }

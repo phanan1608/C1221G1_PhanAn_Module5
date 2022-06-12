@@ -16,6 +16,8 @@ import { CustomerCreateComponent } from './customer/customer-create/customer-cre
 import { FacilityListComponent } from './facility/facility-list/facility-list.component';
 import { FacilityCreateComponent } from './facility/facility-create/facility-create.component';
 import {HttpClientModule} from "@angular/common/http";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FacilityDetailsComponent } from './facility/facility-details/facility-details.component';
 
 
 @NgModule({
@@ -32,13 +34,16 @@ import {HttpClientModule} from "@angular/common/http";
     CustomerListComponent,
     CustomerCreateComponent,
     FacilityListComponent,
-    FacilityCreateComponent
+    FacilityCreateComponent,
+    FacilityDetailsComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
