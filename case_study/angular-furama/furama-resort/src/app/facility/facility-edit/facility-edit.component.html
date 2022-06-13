@@ -3,11 +3,11 @@
   <div class="container h-100">
     <div class="contact-banner">
       <div class="text-center">
-        <h1>Create Facilities</h1>
+        <h1>Update Facilities</h1>
         <nav aria-label="breadcrumb" class="banner-breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li aria-current="page" class="breadcrumb-item active">Create Facilities</li>
+            <li aria-current="page" class="breadcrumb-item active">Update Facilities</li>
           </ol>
           <a [routerLink]="['/facility-list']">Back Facility List</a>
         </nav>
@@ -24,7 +24,7 @@
     <div class="row">
       <div class="col-lg-4 gutters-19">
         <div class="form-group">
-          <input class="form-control" formControlName="id" placeholder="Enter Facility Code" required type="text">
+          <input class="form-control" readonly formControlName="id" placeholder="Enter Facility Code" required type="text">
           <div
             *ngIf="facilityForm.controls.id?.invalid&&(facilityForm.controls.id?.dirty || facilityForm.controls.id?.touched)">
             <div *ngIf="facilityForm.controls.id?.errors.required">
@@ -71,7 +71,7 @@
     <div class="row">
       <div class="col-lg-3 gutters-19">
         <div class="form-group form-select-custom">
-          <select formControlName="rentType">
+          <select formControlName="rentType" [compareWith]="compareRentTypeByID">
             <option disabled value="">Rent Type</option>
             <option [ngValue]="type" *ngFor="let type of rentTypes">{{type.name}}</option>
           </select>
@@ -155,7 +155,8 @@
           <!--            </option>-->
           <!--          </select>-->
 
-          <select class="form-select-custom" (ngModelChange)="changeValue($event)" formControlName="facilityType">
+          <select class="form-select-custom" (ngModelChange)="changeValue($event)"
+                  [compareWith]="compareFacilityTypeByID" formControlName="facilityType">
             <option disabled selected value="">Facility Type</option>
             <option [ngValue]="type" *ngFor="let type of facilityTypes">{{type.name}}</option>
           </select>
@@ -214,8 +215,7 @@
     <div class="form-group">
       <div class="form-group row">
         <div class="col-6">
-
-          <button class="button button--active button-form" [disabled]="facilityForm.invalid" type="submit">Save
+          <button class="button button--active button-form" [disabled]="facilityForm.invalid" type="submit">Update
           </button>
         </div>
         <div class="col-6">

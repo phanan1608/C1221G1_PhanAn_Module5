@@ -1,6 +1,6 @@
 export const contracts = [
   {
-    id: 1,
+    id: 'HD-0001',
     startDate: "2020-12-08",
     endDate: "2020-12-08",
     deposit: 0,
@@ -21,7 +21,7 @@ export const contracts = [
       },
     },
     facility: {
-      id: 2,
+      id: 'DV-0002',
       name: "House Princess 01",
       image: "../../../assets/img/home/explore3.png",
       area: 14000,
@@ -35,11 +35,14 @@ export const contracts = [
         id: 2,
         name: "month"
       },
-      facilityTypeId: 2,
+      facilityType:  {
+        id: 2,
+        name: 'House'
+      },
     },
   },
   {
-    id: 2,
+    id: 'HD-0002',
     startDate: "2020-07-14",
     endDate: "2020-07-21",
     deposit: 200000,
@@ -60,7 +63,7 @@ export const contracts = [
       },
     },
     facility: {
-      id: 3,
+      id: 'DV-0003',
       name: "Room Twin 01",
       image: "../../../assets/img/home/explore4.png",
       area: 5000,
@@ -74,11 +77,14 @@ export const contracts = [
         id: 4,
         name: "hour"
       },
-      facilityTypeId: 3,
+      facilityType: {
+        id: 3,
+        name: 'Room'
+      },
     },
   },
   {
-    id: 4,
+    id: 'HD-0003',
     startDate: "2021-01-14",
     endDate: "2021-01-18",
     deposit: 100000,
@@ -99,7 +105,7 @@ export const contracts = [
       },
     },
     facility: {
-      id: 6,
+      id: 'DV-0006',
       name: "Room Twin 02",
       image: "../../../assets/img/home/explore6.png",
       area: 3000,
@@ -113,11 +119,14 @@ export const contracts = [
         id: 4,
         name: "hour"
       },
-      facilityTypeId: 3,
+      facilityType: {
+        id: 3,
+        name: 'Room'
+      },
     },
   },
   {
-    id: 5,
+    id: 'HD-0004',
     startDate: "2021-07-14",
     endDate: "2021-07-15",
     deposit: 0,
@@ -138,7 +147,7 @@ export const contracts = [
       },
     },
     facility: {
-      id: 3,
+      id: 'DV-0003',
       name: "Room Twin 01",
       image: "../../../assets/img/home/explore4.png",
       area: 5000,
@@ -152,7 +161,10 @@ export const contracts = [
         id: 4,
         name: "hour"
       },
-      facilityTypeId: 3,
+      facilityType: {
+        id: 3,
+        name: 'Room'
+      },
     }
   }
 ]

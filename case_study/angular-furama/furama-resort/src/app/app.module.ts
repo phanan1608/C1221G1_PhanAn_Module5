@@ -18,6 +18,8 @@ import { FacilityCreateComponent } from './facility/facility-create/facility-cre
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FacilityDetailsComponent } from './facility/facility-details/facility-details.component';
+import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
+import { FacilityEditComponent } from './facility/facility-edit/facility-edit.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { FacilityDetailsComponent } from './facility/facility-details/facility-d
     CustomerCreateComponent,
     FacilityListComponent,
     FacilityCreateComponent,
-    FacilityDetailsComponent
+    FacilityDetailsComponent,
+    CustomerEditComponent,
+    FacilityEditComponent,
   ],
     imports: [
         BrowserModule,

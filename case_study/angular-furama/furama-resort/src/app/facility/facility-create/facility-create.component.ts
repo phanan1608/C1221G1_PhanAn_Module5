@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {facilityTypes} from "../../../assets/data/facility-type";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FacilityService} from "../../service/facility-service";
+import {FacilityType} from "../../model/facility-type";
+import {rentTypes} from "../../../assets/data/rent-type";
 
 @Component({
   selector: 'app-facility-create',
@@ -13,13 +16,14 @@ export class FacilityCreateComponent implements OnInit {
   room: boolean = true;
   selectedValue: any = 'null';
 
-  constructor() {
+  constructor(private facilityService:FacilityService) {
   }
 
   ngOnInit(): void {
   }
 
   facilityTypes = facilityTypes;
+  rentTypes = rentTypes
 
   facilityForm = new FormGroup({
     id: new FormControl("", [Validators.required, Validators.pattern("^DV-\\d{4}$")]),
@@ -30,27 +34,28 @@ export class FacilityCreateComponent implements OnInit {
     maxPeople: new FormControl("", [Validators.required, Validators.pattern("^\\+*\\d+$")]),
     standardRoom: new FormControl("", [Validators.required]),
     rentType: new FormControl("", [Validators.required]),
-    facilityTypeId: new FormControl("", [Validators.required]),
+    facilityType: new FormControl("", [Validators.required]),
     numberOfFloors: new FormControl("",),
     descriptionOtherConvenience: new FormControl("",),
     poolArea: new FormControl("", ),
   })
 
 
-  changeValue(value: any) {
-    this.selectedValue = value;
+  changeValue(value: FacilityType) {
+    console.log(value);
+    this.selectedValue = value.id;
     switch (this.selectedValue) {
-      case '1':
+      case 1:
         this.villa = false;
         this.house = true;
         this.room = true;
         break;
-      case '2':
+      case 2:
         this.villa = true;
         this.house = false;
         this.room = true;
         break;
-      case '3':
+      case 3:
         this.villa = true;
         this.house = true;
         this.room = false;
@@ -63,6 +68,7 @@ export class FacilityCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.facilityForm.value)
+    console.log(this.facilityForm.value);
+    this.facilityService.addFacility(this.facilityForm.value);
   }
 }

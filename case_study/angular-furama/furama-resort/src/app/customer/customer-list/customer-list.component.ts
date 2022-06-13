@@ -12,12 +12,24 @@ import {CustomerType} from "../../model/customer-type";
 export class CustomerListComponent implements OnInit {
   constructor(private customerService:CustomerService, private customerTypeService:CustomerTypeService) { }
 
-  customers:Customer[] =this.customerService.getListCustomer();
+  customers:Customer[] ;
 
   customerTypes:CustomerType[] = this.customerTypeService.getListCustomerType();
+  customerToDelete: string;
+  idToDelete: string;
 
   ngOnInit(): void {
+   this.customers= this.customerService.getListCustomer();
   }
 
 
+  deleteModal(name: string,code:string) {
+    this.customerToDelete = name;
+    this.idToDelete = code;
+  }
+
+  deleteCustomer() {
+    this.customerService.delete(this.idToDelete);
+    this.ngOnInit()
+  }
 }

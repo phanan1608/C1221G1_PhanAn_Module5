@@ -136,12 +136,12 @@
                   </button>
                   <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                      <button class="btn btn-warning">
-                        <i class='ti-settings'></i>
-                      </button>
+                      <a [routerLink]="['/facility-edit',item.id]" class="btn btn-warning">
+                        <i style="color: white" class='ti-settings'></i>
+                      </a>
                     </li>
                     <li class="nav-item">
-                      <button class="btn btn-danger" data-target="#deleteModal"
+                      <button class="btn btn-danger" data-target="#deleteModal" (click)="showMessage(item.name,item.id)"
                               data-toggle="modal">
                         <i class='bx bx-trash'></i>
                       </button>
@@ -158,297 +158,40 @@
           </div>
         </div>
 
-        <div class="m-3 mx-auto">
-          <div class="row d-flex justify-content-center">
-            <nav aria-label="Page navigation example" style="width: initial"
-                 th:fragment="pagination">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link">
-                    Previous
-                    <!--                            <i class="fas fa-chevron-left"></i>-->
-                  </a>
-                </li>
-                <li class="page-item disabled">
-                  <a class="page-link disabled" href="#" th:text="${employeeList.number + 1}">1</a>
-                </li>
-                <li class="page-item disabled">
-                  <a class="page-link disabled" href="#">/</a>
-                </li>
-                <li class="page-item disabled">
-                  <a class="page-link disabled" href="#" th:text="${employeeList.totalPages}">2</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link">
-                    Next
-                    <!--                            <i class="fas fa-chevron-left"></i>-->
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
       </div>
     </div>
-<!--    <div class="card-all">-->
-<!--      <div class="row pb-4">-->
-<!--        <div class="col-md-6 col-xl-4 mb-5">-->
-<!--          <div class="card card-explore">-->
-<!--            <div class="card-explore__img">-->
-<!--              <img alt="" class="card-img" src="../../../assets/img/home/explore1.png">-->
-<!--            </div>-->
+    <div class="m-3 mx-auto">
+      <div class="row d-flex justify-content-center">
+        <nav aria-label="Page navigation example" style="width: initial"
+             th:fragment="pagination">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link">
+                Previous
+                <!--                            <i class="fas fa-chevron-left"></i>-->
+              </a>
+            </li>
+            <li class="page-item disabled">
+              <a class="page-link disabled" href="#" th:text="${employeeList.number + 1}">1</a>
+            </li>
+            <li class="page-item disabled">
+              <a class="page-link disabled" href="#">/</a>
+            </li>
+            <li class="page-item disabled">
+              <a class="page-link disabled" href="#" th:text="${employeeList.totalPages}">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link">
+                Next
+                <!--                            <i class="fas fa-chevron-left"></i>-->
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
 
-<!--            <div class="card-body">-->
-<!--              <h3 class="card-explore__price">$150.00 <sub>/ Per Night</sub></h3>-->
-<!--              <div class="d-flex justify-content-between align-items-center">-->
-<!--                <h4 class="card-explore__title"><a href="#">Classic Bed Room</a></h4>-->
-<!--                <div class="dropout d-flex align-items-center">-->
-<!--                  <button class="more">-->
-<!--                    <span></span>-->
-<!--                    <span></span>-->
-<!--                    <span></span>-->
-<!--                  </button>-->
-<!--                  <ul class="navbar-nav mx-auto">-->
-<!--                    <li class="nav-item">-->
-<!--                      <button class="btn btn-warning">-->
-<!--                        <i class='ti-settings'></i>-->
-<!--                      </button>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                      <button class="btn btn-danger" data-target="#deleteModal"-->
-<!--                              data-toggle="modal">-->
-<!--                        <i class='bx bx-trash'></i>-->
-<!--                      </button>-->
-<!--                    </li>-->
-<!--                  </ul>-->
-<!--                </div>-->
-<!--              </div>-->
 
-<!--              <p>Beginning fourth dominion creeping god was. Beginning, which fly yieldi dry beast moved-->
-<!--                blessed </p>-->
-<!--              <a class="card-explore__link" href="#">Book Now <i class="ti-arrow-right"></i></a>-->
-<!--            </div>-->
-
-<!--          </div>-->
-<!--        </div>-->
-
-<!--        <div class="col-md-6 col-xl-4 mb-5">-->
-<!--          <div class="card card-explore">-->
-<!--            <div class="card-explore__img">-->
-<!--              <img alt="" class="card-img" src="../../../assets/img/home/explore2.png">-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--              <h3 class="card-explore__price">$170.00 <sub>/ Per Night</sub></h3>-->
-<!--              <div class="d-flex justify-content-between align-items-center">-->
-<!--                <h4 class="card-explore__title"><a href="#">Premium Room</a></h4>-->
-<!--                <div class="dropout d-flex align-items-center">-->
-<!--                  <button class="more">-->
-<!--                    <span></span>-->
-<!--                    <span></span>-->
-<!--                    <span></span>-->
-<!--                  </button>-->
-<!--                  <ul class="navbar-nav mx-auto">-->
-<!--                    <li class="nav-item">-->
-<!--                      <button class="btn btn-warning">-->
-<!--                        <i class='ti-settings'></i>-->
-<!--                      </button>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                      <button class="btn btn-danger" data-target="#deleteModal"-->
-<!--                              data-toggle="modal">-->
-<!--                        <i class='bx bx-trash'></i>-->
-<!--                      </button>-->
-<!--                    </li>-->
-<!--                  </ul>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <p>Beginning fourth dominion creeping god was. Beginning, which fly yieldi dry beast moved-->
-<!--                blessed </p>-->
-<!--              <a class="card-explore__link" href="#">Book Now <i class="ti-arrow-right"></i></a>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-
-<!--        <div class="col-md-6 col-xl-4 mb-5">-->
-<!--          <div class="card card-explore">-->
-<!--            <div class="card-explore__img">-->
-<!--              <img alt="" class="card-img" src="../../../assets/img/home/explore3.png">-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--              <h3 class="card-explore__price">$190.00 <sub>/ Per Night</sub></h3>-->
-<!--              <div class="d-flex justify-content-between align-items-center">-->
-<!--                <h4 class="card-explore__title"><a href="#">Family Room</a></h4>-->
-<!--                <div class="dropout d-flex align-items-center">-->
-<!--                  <button class="more">-->
-<!--                    <span></span>-->
-<!--                    <span></span>-->
-<!--                    <span></span>-->
-<!--                  </button>-->
-<!--                  <ul class="navbar-nav mx-auto">-->
-<!--                    <li class="nav-item">-->
-<!--                      <button class="btn btn-warning">-->
-<!--                        <i class='ti-settings'></i>-->
-<!--                      </button>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                      <button class="btn btn-danger" data-target="#deleteModal"-->
-<!--                              data-toggle="modal">-->
-<!--                        <i class='bx bx-trash'></i>-->
-<!--                      </button>-->
-<!--                    </li>-->
-<!--                  </ul>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <p>Beginning fourth dominion creeping god was. Beginning, which fly yieldi dry beast moved-->
-<!--                blessed </p>-->
-<!--              <a class="card-explore__link" href="#">Book Now <i class="ti-arrow-right"></i></a>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-
-<!--        <div class="col-md-6 col-xl-4 mb-5">-->
-<!--          <div class="card card-explore">-->
-<!--            <div class="card-explore__img">-->
-<!--              <img alt="" class="card-img" src="../../../assets/img/home/explore4.png">-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--              <h3 class="card-explore__price">$120.00 <sub>/ Per Night</sub></h3>-->
-<!--              <div class="d-flex justify-content-between align-items-center">-->
-<!--                <h4 class="card-explore__title"><a href="#">Single Bed Room</a></h4>-->
-<!--                <div class="dropout d-flex align-items-center">-->
-<!--                  <button class="more">-->
-<!--                    <span></span>-->
-<!--                    <span></span>-->
-<!--                    <span></span>-->
-<!--                  </button>-->
-<!--                  <ul class="navbar-nav mx-auto">-->
-<!--                    <li class="nav-item">-->
-<!--                      <button class="btn btn-warning">-->
-<!--                        <i class='ti-settings'></i>-->
-<!--                      </button>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                      <button class="btn btn-danger" data-target="#deleteModal"-->
-<!--                              data-toggle="modal">-->
-<!--                        <i class='bx bx-trash'></i>-->
-<!--                      </button>-->
-<!--                    </li>-->
-<!--                  </ul>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <p>Beginning fourth dominion creeping god was. Beginning, which fly yieldi dry beast moved-->
-<!--                blessed </p>-->
-<!--              <a class="card-explore__link" href="#">Book Now <i class="ti-arrow-right"></i></a>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-
-<!--        <div class="col-md-6 col-xl-4 mb-5">-->
-<!--          <div class="card card-explore">-->
-<!--            <div class="card-explore__img">-->
-<!--              <img alt="" class="card-img" src="../../../assets/img/home/explore5.png">-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--              <h3 class="card-explore__price">$130.00 <sub>/ Per Night</sub></h3>-->
-<!--              <div class="d-flex justify-content-between align-items-center">-->
-<!--                <h4 class="card-explore__title"><a href="#">Classic Bed Room</a></h4>-->
-<!--                <div class="dropout d-flex align-items-center">-->
-<!--                  <button class="more">-->
-<!--                    <span></span>-->
-<!--                    <span></span>-->
-<!--                    <span></span>-->
-<!--                  </button>-->
-<!--                  <ul class="navbar-nav mx-auto">-->
-<!--                    <li class="nav-item">-->
-<!--                      <button class="btn btn-warning">-->
-<!--                        <i class='ti-settings'></i>-->
-<!--                      </button>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                      <button class="btn btn-danger" data-target="#deleteModal"-->
-<!--                              data-toggle="modal">-->
-<!--                        <i class='bx bx-trash'></i>-->
-<!--                      </button>-->
-<!--                    </li>-->
-<!--                  </ul>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <p>Beginning fourth dominion creeping god was. Beginning, which fly yieldi dry beast moved-->
-<!--                blessed </p>-->
-<!--              <a class="card-explore__link" href="#">Book Now <i class="ti-arrow-right"></i></a>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-
-<!--        <div class="col-md-6 col-xl-4 mb-5">-->
-<!--          <div class="card card-explore">-->
-<!--            <div class="card-explore__img">-->
-<!--              <img alt="" class="card-img" src="../../../assets/img/home/explore6.png">-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--              <h3 class="card-explore__price">$150.00 <sub>/ Per Night</sub></h3>-->
-<!--              <div class="d-flex justify-content-between align-items-center">-->
-<!--                <h4 class="card-explore__title"><a href="#">Family Room</a></h4>-->
-<!--                <div class="dropout d-flex align-items-center">-->
-<!--                  <button class="more">-->
-<!--                    <span></span>-->
-<!--                    <span></span>-->
-<!--                    <span></span>-->
-<!--                  </button>-->
-<!--                  <ul class="navbar-nav mx-auto">-->
-<!--                    <li class="nav-item">-->
-<!--                      <button class="btn btn-warning">-->
-<!--                        <i class='ti-settings'></i>-->
-<!--                      </button>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                      <button class="btn btn-danger" data-target="#deleteModal"-->
-<!--                              data-toggle="modal">-->
-<!--                        <i class='bx bx-trash'></i>-->
-<!--                      </button>-->
-<!--                    </li>-->
-<!--                  </ul>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <p>Beginning fourth dominion creeping god was. Beginning, which fly yieldi dry beast moved-->
-<!--                blessed </p>-->
-<!--              <a class="card-explore__link" href="#">Book Now <i class="ti-arrow-right"></i></a>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-
-<!--        <div class="m-3 mx-auto">-->
-<!--          <div class="row d-flex justify-content-center">-->
-<!--            <nav aria-label="Page navigation example" style="width: initial"-->
-<!--                 th:fragment="pagination">-->
-<!--              <ul class="pagination">-->
-<!--                <li class="page-item">-->
-<!--                  <a class="page-link">-->
-<!--                    Previous-->
-<!--                    &lt;!&ndash;                            <i class="fas fa-chevron-left"></i>&ndash;&gt;-->
-<!--                  </a>-->
-<!--                </li>-->
-<!--                <li class="page-item disabled">-->
-<!--                  <a class="page-link disabled" href="#" th:text="${employeeList.number + 1}">1</a>-->
-<!--                </li>-->
-<!--                <li class="page-item disabled">-->
-<!--                  <a class="page-link disabled" href="#">/</a>-->
-<!--                </li>-->
-<!--                <li class="page-item disabled">-->
-<!--                  <a class="page-link disabled" href="#" th:text="${employeeList.totalPages}">2</a>-->
-<!--                </li>-->
-<!--                <li class="page-item">-->
-<!--                  <a class="page-link">-->
-<!--                    Next-->
-<!--                    &lt;!&ndash;                            <i class="fas fa-chevron-left"></i>&ndash;&gt;-->
-<!--                  </a>-->
-<!--                </li>-->
-<!--              </ul>-->
-<!--            </nav>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
   </div>
 </section>
 <!-- ================ Explore section end ================= -->
@@ -461,16 +204,16 @@
     <div class="modal-content">
       <form>
         <div class="modal-header">
-          <h4 class="modal-title">Delete Employee</h4>
+          <h4 class="modal-title">Delete Facility</h4>
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
         <div class="modal-body">
-          <p>Are you sure you want to delete these Records?</p>
+          <p>Are you sure you want to delete <span style="color: #cca772; font-weight: bold">{{nameToDelete}}</span> ?</p>
           <p class="text-warning"><small>This action cannot be undone.</small></p>
         </div>
         <div class="modal-footer">
+          <input (click)="deleteModal()" type="submit" class="button button--active button-form" data-dismiss="modal" value="Delete">
           <input type="button" class="button button--cancel cancel-banner-btn" data-dismiss="modal" value="Cancel">
-          <input type="submit" class="button button--active button-form" value="Delete">
         </div>
       </form>
     </div>

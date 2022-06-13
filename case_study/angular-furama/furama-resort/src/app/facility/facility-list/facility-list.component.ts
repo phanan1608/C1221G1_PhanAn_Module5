@@ -3,7 +3,6 @@ import {Facility} from "../../model/facility";
 import {FacilityService} from "../../service/facility-service";
 
 declare let threeDotForFacility: any;
-declare let niceSelect: any;
 
 @Component({
   selector: 'app-facility-list',
@@ -11,15 +10,26 @@ declare let niceSelect: any;
   styleUrls: ['./facility-list.component.css']
 })
 export class FacilityListComponent implements OnInit {
-  facilities: Facility[]= this.facilityService.getFacilityList();
+  facilities: Facility[];
+  nameToDelete:string;
+  idToDelete:string;
 
   constructor(private facilityService: FacilityService) { }
 
 
   ngOnInit(): void {
     new threeDotForFacility();
-    // new niceSelect();
+    this.facilities = this.facilityService.getFacilityList();
   }
 
 
+  showMessage(name: string, id: string) {
+      this.nameToDelete = name;
+      this.idToDelete = id;
+  }
+
+  deleteModal() {
+      this.facilityService.delete(this.idToDelete);
+      this.ngOnInit();
+  }
 }

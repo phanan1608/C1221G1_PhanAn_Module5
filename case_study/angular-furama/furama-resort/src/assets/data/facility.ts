@@ -1,6 +1,6 @@
 export const facilities = [
   {
-    id: 1,
+    id: 'DV-0001',
     name: "Villa Beach Front",
     image: "../../../assets/img/home/room-5.png",
     // image: "https://i.pinimg.com/564x/64/40/4f/64404fb92bfa2931fe33f388ce0daf54.jpg",
@@ -15,10 +15,13 @@ export const facilities = [
       id: 3,
       name: "day"
     },
-    facilityTypeId: 1,
+    facilityType:  {
+      id: 1,
+      name: 'Villa'
+    },
   },
   {
-    id: 2,
+    id: 'DV-0002',
     name: "House Princess 01",
     image: "../../../assets/img/home/room-4.png",
     // image: "https://i.pinimg.com/736x/ca/4b/27/ca4b27f3c4ba140678be69e4114e9d74.jpg",
@@ -33,10 +36,13 @@ export const facilities = [
       id: 2,
       name: "month"
     },
-    facilityTypeId: 2,
+    facilityType:  {
+      id: 2,
+      name: 'House'
+    },
   },
   {
-    id: 3,
+    id: 'DV-0003',
     name: "Room Twin 01",
     image: "../../../assets/img/home/room-6.png",
     // image: "https://i.pinimg.com/564x/81/eb/e1/81ebe1f76d6a6599e317d5d53b8d5c71.jpg",
@@ -51,10 +57,13 @@ export const facilities = [
       id: 4,
       name: "hour"
     },
-    facilityTypeId: 3,
+    facilityType:  {
+      id: 3,
+      name: 'Room'
+    },
   },
   {
-    id: 4,
+    id: 'DV-0004',
     name: "Villa No Beach Front",
     image: "../../../assets/img/home/room-3.png",
     // image: "https://i.pinimg.com/564x/e6/1b/e1/e61be1bc18225d2734d781948f05c1cb.jpg",
@@ -69,10 +78,13 @@ export const facilities = [
       id: 3,
       name: "day"
     },
-    facilityTypeId: 1,
+    facilityType:  {
+      id: 1,
+      name: 'Villa'
+    },
   },
   {
-    id: 5,
+    id: 'DV-0005',
     name: "House Princess 02",
     image: "../../../assets/img/home/room-2.png",
     // image: "https://i.pinimg.com/564x/c4/49/02/c449029696b9091dacc8626080bc64a7.jpg",
@@ -87,10 +99,13 @@ export const facilities = [
       id: 3,
       name: "day"
     },
-    facilityTypeId: 2,
+    facilityType:  {
+      id: 2,
+      name: 'House'
+    },
   },
   {
-    id: 6,
+    id: 'DV-0006',
     name: "Room Twin 02",
     image: "../../../assets/img/home/room-1.png",
     // image: "https://i.pinimg.com/564x/2b/19/9d/2b199dbdf079bfc50c0ce98cf469132e.jpg",
@@ -105,6 +120,9 @@ export const facilities = [
       id: 4,
       name: "hour"
     },
-    facilityTypeId: 3,
+    facilityType:  {
+      id: 3,
+      name: 'Room'
+    },
   }
 ];

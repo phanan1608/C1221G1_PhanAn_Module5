@@ -24,7 +24,7 @@
     <div class="row">
       <div class="col-lg-3 gutters-19">
         <div class="form-group">
-          <input  placeholder="Enter Customer Code" class="form-control" type="text" formControlName="code">
+          <input  placeholder="Enter Customer Code" class="form-control" type="text" formControlName="code" readonly>
           <div
             *ngIf="customerForm.controls.code?.invalid&&(customerForm.controls.code?.dirty || customerForm.controls.code?.touched)">
             <div *ngIf="customerForm.controls.code?.errors.required">
@@ -158,7 +158,8 @@
       </div>
       <div class="col-lg-3  gutters-19">
         <div class="form-group form-select-custom">
-          <select id="" formControlName="customerType">
+          <select id="" formControlName="customerType"
+                  [compareWith]="compareByID">
             <option disabled selected value="">Customer Type</option>
             <option [ngValue]="type" *ngFor="let type of customerTypes">{{type.name}}</option>
           </select>
@@ -175,7 +176,7 @@
     <div class="form-group row">
       <div class="col-6">
 
-        <button class="button button-form button--active" [disabled]="customerForm.invalid" type="submit">Save</button>
+        <button class="button button-form button--active" type="submit">Save</button>
       </div>
       <div class="col-6">
         <a [routerLink]="['/customer-list']"

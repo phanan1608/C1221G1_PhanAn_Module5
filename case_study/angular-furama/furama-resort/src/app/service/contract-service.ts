@@ -12,7 +12,10 @@ export class ContractService {
 
   private contracts: Contract[] = contracts;
 
-  public getListContract(){
+  getListContract(){
     return this.contracts;
+  }
+  addContract(contract:Contract){
+    this.contracts.push(contract);
   }
 }

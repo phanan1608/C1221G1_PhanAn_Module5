@@ -11,6 +11,8 @@ import {FacilityListComponent} from "./facility/facility-list/facility-list.comp
 import {FacilityCreateComponent} from "./facility/facility-create/facility-create.component";
 import {AboutComponent} from "./about/about.component";
 import {FacilityDetailsComponent} from "./facility/facility-details/facility-details.component";
+import {CustomerEditComponent} from "./customer/customer-edit/customer-edit.component";
+import {FacilityEditComponent} from "./facility/facility-edit/facility-edit.component";
 
 
 const routes: Routes = [
@@ -22,6 +24,8 @@ const routes: Routes = [
   {path: 'contract-create', component: ContractCreateComponent},
   {path: 'customer-list', component: CustomerListComponent},
   {path: 'customer-create', component: CustomerCreateComponent},
+  {path: 'customer-edit/:customerId', component: CustomerEditComponent},
+  {path: 'facility-edit/:facilityId', component: FacilityEditComponent},
   {path: 'facility-list', component: FacilityListComponent},
   {path: 'facility-create', component: FacilityCreateComponent},
   {path: 'facility-detail', component: FacilityDetailsComponent},

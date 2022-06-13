@@ -92,8 +92,8 @@
           <td>{{item.idCard}}</td>
           <td>{{item.address}}</td>
           <td>
-            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="ti-settings" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="ti-trash" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+            <a [routerLink]="['/customer-edit',item.code]" class="edit"><i class="ti-settings" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+            <a href="#deleteEmployeeModal" (click)="deleteModal(item.name,item.code)" class="delete" data-toggle="modal"><i class="ti-trash" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
           </td>
         </tr>
         </tbody>
@@ -193,12 +193,12 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
         <div class="modal-body">
-          <p>Are you sure you want to delete these Records?</p>
+          <p>Are you sure you want to delete {{customerToDelete}} </p>
           <p class="text-warning"><small>This action cannot be undone.</small></p>
         </div>
         <div class="modal-footer">
           <input type="button" class="button button--cancel cancel-banner-btn" data-dismiss="modal" value="Cancel">
-          <input type="submit" class="button button--active button-form" value="Delete">
+          <input (click)="deleteCustomer()" type="submit" class="button button--active button-form" data-dismiss="modal" value="Delete">
         </div>
       </form>
     </div>

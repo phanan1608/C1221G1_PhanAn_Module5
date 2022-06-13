@@ -2,7 +2,7 @@ import {RentType} from "./rent-type";
 import {FacilityType} from "./facility-type";
 
 export interface Facility {
-  id:number;
+  id:string;
   name:string;
   area:number;
   cost:number;
@@ -13,5 +13,5 @@ export interface Facility {
   poolArea?:number;
   numberOfFloors?:number;
   rentType?:RentType;
-  facilityTypeId?:number
+  facilityType?:FacilityType
 }

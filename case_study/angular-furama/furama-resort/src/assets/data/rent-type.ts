@@ -1,4 +1,4 @@
-export const RentTypes = [
+export const rentTypes = [
   {
     id: 1,
     name: "year"

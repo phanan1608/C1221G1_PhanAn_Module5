@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {customerTypes} from "../../../assets/data/customer-type";
+import {CustomerService} from "../../service/customer-service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-customer-create',
@@ -9,7 +11,7 @@ import {customerTypes} from "../../../assets/data/customer-type";
 })
 export class CustomerCreateComponent implements OnInit {
 
-  constructor() {
+  constructor(private customerService:CustomerService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -36,11 +38,15 @@ export class CustomerCreateComponent implements OnInit {
 
       image: new FormControl("",[Validators.required]),
 
-      customerTypeId: new FormControl("",[Validators.required]),
+      customerType: new FormControl("",[Validators.required]),
     }
   )
 
   onSubmit() {
     console.log(this.customerForm.value)
+    if (this.customerForm.valid){
+      this.customerService.addCustomer(this.customerForm.value)
+      this.router.navigate(["/customer-list"])
+    }
   }
 }
