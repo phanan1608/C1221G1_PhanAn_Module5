@@ -29,7 +29,6 @@ export class CustomerService {
   }
 
   delete(idToDelete: string) {
-        this.customers =  this.customers.filter(customer => customer.code!=idToDelete);
-    }
-
+    this.customers =  this.customers.filter(customer => customer.code!=idToDelete);
+  }
 }

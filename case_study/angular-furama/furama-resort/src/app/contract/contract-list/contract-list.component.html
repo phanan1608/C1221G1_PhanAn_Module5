@@ -67,8 +67,8 @@
           <td>{{item.endDate|date:"dd-MM-yyyy"}}</td>
           <td>{{item.customer.name}}</td>
           <td>{{item.facility.name}}</td>
-          <td>{{item.deposit|number}}</td>
-          <td>{{item.totalMoney|number}}</td>
+          <td>{{item.deposit|currency:'USD':'symbol':'1.0-0'}}</td>
+          <td>{{item.totalMoney|currency:'USD':'symbol':'1.0-0'}}</td>
         </tr>
         </tbody>
       </table>

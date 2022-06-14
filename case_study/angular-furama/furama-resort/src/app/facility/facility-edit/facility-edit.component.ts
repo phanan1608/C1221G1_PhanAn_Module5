@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FacilityService} from "../../service/facility-service";
+import {FacilityService} from "../../service/facility.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {FacilityType} from "../../model/facility-type";
 import {facilityTypes} from "../../../assets/data/facility-type";
@@ -23,6 +23,7 @@ export class FacilityEditComponent implements OnInit {
   facilityTypes = facilityTypes;
   rentTypes = rentTypes;
   facilityForm: FormGroup;
+  submit:boolean = false;
 
 
   constructor(private facilityService:FacilityService, private  activatedRoute:ActivatedRoute,
@@ -37,6 +38,7 @@ export class FacilityEditComponent implements OnInit {
     if (this.facility === undefined) {
       this.router.navigate(['/error']);
     }
+    this.changeValue(this.facility.facilityType);
 
     this.facilityForm = new FormGroup({
       id: new FormControl(this.facility.id, [Validators.required, Validators.pattern("^DV-\\d{4}$")]),
@@ -93,7 +95,9 @@ export class FacilityEditComponent implements OnInit {
 
   onSubmit() {
     console.log(this.facilityForm.value);
+    this.submit = true;
     if(this.facilityForm.valid){
+      this.submit = false;
       this.facilityService.editFacility(this.facilityForm.value);
       this.router.navigate(['/facility-list']);
     }

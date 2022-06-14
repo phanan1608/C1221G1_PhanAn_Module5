@@ -1,0 +1,158 @@
+<!-- ================ start banner area ================= -->
+<section class="contact-banner-area" id="contact">
+  <div class="container h-100">
+    <div class="contact-banner">
+      <div class="text-center">
+        <h1>Create Contract</h1>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li aria-current="page" class="breadcrumb-item active">Create Contract</li>
+          </ol>
+          <a [routerLink]="['/contract-list']">Back Contract List</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================ end banner area ================= -->
+
+
+<!-- ================ start form area ================= -->
+<form class="form-search form-search-position" [formGroup]="contractForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3  gutters-19">
+        <div class="form-group">
+          <input class="form-control" formControlName="id" placeholder="Enter Contract ID" required
+                 type="text">
+          <div
+            *ngIf="contractForm.controls.id?.invalid&&(contractForm.controls.id?.dirty || contractForm.controls.id?.touched || submit)">
+            <div *ngIf="contractForm.controls.id?.errors.required">
+              <small class="form-text text-muted">Contract ID can not bank</small>
+            </div>
+            <div *ngIf="contractForm.controls.id?.errors.pattern">
+              <small class="form-text text-muted">Invalid Contract ID</small>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-lg-3 gutters-19">
+        <div class="form-group">
+          <!--                    <input class="form-control" name="start-date" placeholder="Enter Start Date" required-->
+          <!--                           type="date">-->
+          <input placeholder="Start Date" formControlName="startDate" class="form-control" type="text" onfocus="(this.type='date')">
+          <div
+            *ngIf="contractForm.controls.startDate?.invalid&&(contractForm.controls.startDate?.dirty || contractForm.controls.startDate?.touched || submit)">
+            <div *ngIf="contractForm.controls.startDate?.errors.required">
+              <small class="form-text text-muted">Start Date can not bank</small>
+            </div>
+            <div *ngIf="contractForm.controls.startDate?.errors.pattern">
+              <small class="form-text text-muted">Invalid Start Date</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 gutters-19">
+        <div class="form-group">
+          <!--                    <input class="form-control" name="end-date" placeholder="Enter End Date" required-->
+          <!--                           type="date">-->
+          <input placeholder="End Date" formControlName="endDate" class="form-control" type="text" onfocus="(this.type='date')">
+          <div
+            *ngIf="contractForm.controls.endDate?.invalid&&(contractForm.controls.endDate?.dirty || contractForm.controls.endDate?.touched || submit)">
+            <div *ngIf="contractForm.controls.endDate?.errors.required">
+              <small class="form-text text-muted">End Date can not bank</small>
+            </div>
+            <div *ngIf="contractForm.controls.endDate?.errors.pattern">
+              <small class="form-text text-muted">Invalid End Date</small>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-lg-3  gutters-19">
+        <div class="form-group">
+          <input class="form-control" formControlName="deposit" placeholder="Enter Deposit" required
+                 type="number">
+          <div
+            *ngIf="contractForm.controls.deposit?.invalid&&(contractForm.controls.deposit?.dirty || contractForm.controls.deposit?.touched || submit)">
+            <div *ngIf="contractForm.controls.deposit?.errors.required">
+              <small class="form-text text-muted">Deposit can not bank</small>
+            </div>
+            <div *ngIf="contractForm.controls.deposit?.errors.pattern">
+              <small class="form-text text-muted">Deposit must be position number</small>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4  gutters-19">
+        <div class="form-group">
+          <input class="form-control" formControlName="totalMoney" placeholder="Enter Total Money" required
+                 type="number">
+          <div
+            *ngIf="contractForm.controls.totalMoney?.invalid&&(contractForm.controls.totalMoney?.dirty || contractForm.controls.totalMoney?.touched || submit)">
+            <div *ngIf="contractForm.controls.totalMoney?.errors.required">
+              <small class="form-text text-muted">Total Money can not bank</small>
+            </div>
+            <div *ngIf="contractForm.controls.totalMoney?.errors.pattern">
+              <small class="form-text text-muted">Total Money must be position number</small>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-lg-4 gutters-19">
+        <div class="form-group">
+          <div class="form-select-custom">
+            <select class="form-control" formControlName="customer">
+              <option disabled  value="">Choose Customer</option>
+              <option [ngValue]="customer" *ngFor="let customer of customers">{{customer.name}}</option>
+            </select>
+            <div
+              *ngIf="contractForm.controls.customer?.invalid&&(contractForm.controls.customer?.dirty || contractForm.controls.customer?.touched || submit)">
+              <div *ngIf="contractForm.controls.customer?.errors.required">
+                <small class="form-text text-muted">Customer can not bank</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 gutters-19">
+        <div class="form-group">
+          <div class="form-select-custom">
+
+            <select class="" formControlName="facility">
+              <option disabled  value="">Choose Facility</option>
+              <option [ngValue]="facility" *ngFor="let facility of facilities">{{facility.name}}</option>
+            </select>
+            <div
+              *ngIf="contractForm.controls.facility?.invalid&&(contractForm.controls.facility?.dirty || contractForm.controls.facility?.touched || submit)">
+              <div *ngIf="contractForm.controls.facility?.errors.required">
+                <small class="form-text text-muted">Facility can not bank</small>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <div class="form-group row">
+        <div class="col-6">
+
+          <button class="button button--active button-form" type="submit">Save</button>
+        </div>
+        <div class="col-6">
+
+          <a [routerLink]="['/contract-list']" class="button button--cancel cancel-banner-btn text-center col-12">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!-- ================ end form area ================= -->
