@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {customerTypes} from "../../../assets/data/customer-type";
+import {customerTypes} from "../customer-type-data";
 import {Router} from "@angular/router";
-import {CustomerService} from "../../service/customer.service";
+import {CustomerService} from "../customer.service";
 
 @Component({
   selector: 'app-customer-create',
@@ -51,7 +51,7 @@ export class CustomerCreateComponent implements OnInit {
     if (this.customerForm.valid){
       this.submit=false;
       this.customerService.addCustomer(this.customerForm.value)
-      this.router.navigate(["/customer-list"])
+      this.router.navigate(["/customer/list"])
     }
   }
 }

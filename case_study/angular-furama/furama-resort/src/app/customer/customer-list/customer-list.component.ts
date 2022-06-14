@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Customer} from "../../model/customer";
-import {CustomerTypeService} from "../../service/customer-type.service";
-import {CustomerType} from "../../model/customer-type";
-import {CustomerService} from "../../service/customer.service";
+import {Customer} from "../customer";
+import {CustomerType} from "../customer-type";
+import {CustomerService} from "../customer.service";
+import {customerTypes} from "../customer-type-data";
 
 @Component({
   selector: 'app-customer-list',
@@ -10,11 +10,11 @@ import {CustomerService} from "../../service/customer.service";
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-  constructor(private customerService:CustomerService, private customerTypeService:CustomerTypeService) { }
+  constructor(private customerService:CustomerService) { }
 
   customers:Customer[] ;
 
-  customerTypes:CustomerType[] = this.customerTypeService.getListCustomerType();
+  customerTypes:CustomerType[] = customerTypes;
   customerToDelete: string;
   idToDelete: string;
 

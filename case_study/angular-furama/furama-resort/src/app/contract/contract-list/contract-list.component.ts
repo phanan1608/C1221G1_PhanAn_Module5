@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Contract} from "../../model/contract";
-import {Customer} from "../../model/customer";
-import {Facility} from "../../model/facility";
-import {ContractService} from "../../service/contract.service";
-import {FacilityService} from "../../service/facility.service";
-import {CustomerService} from "../../service/customer.service";
+import {Contract} from "../contract";
+import {ContractService} from "../contract.service";
+import {FacilityService} from "../../facility/facility.service";
+import {CustomerService} from "../../customer/customer.service";
 
 @Component({
   selector: 'app-contract-list',
@@ -16,14 +14,14 @@ export class ContractListComponent implements OnInit {
 
   constructor(private contractService: ContractService, private customerService: CustomerService, private facilityService: FacilityService) {
   }
-  contracts: Contract[] ;
+
+  contracts: Contract[];
   // customers: Customer[] = this.customerService.getListCustomer();
   // facilities: Facility[] = this.facilityService.getFacilityList();
 
   ngOnInit(): void {
     this.contracts = this.contractService.getListContract();
   }
-
 
 
 }

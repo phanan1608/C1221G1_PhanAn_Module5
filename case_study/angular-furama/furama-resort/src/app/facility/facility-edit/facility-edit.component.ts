@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {FacilityService} from "../../service/facility.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {FacilityType} from "../../model/facility-type";
-import {facilityTypes} from "../../../assets/data/facility-type";
-import {Facility} from "../../model/facility";
+import {FacilityType} from "../facility-type";
+import {facilityTypes} from "../facility-type-data";
+import {Facility} from "../facility";
 import {ActivatedRoute, Router} from "@angular/router";
-import {facilities} from "../../../assets/data/facility";
-import {rentTypes} from "../../../assets/data/rent-type";
+import {facilities} from "../facility-data";
+import {rentTypes} from "../rent-type-data";
+import {FacilityService} from "../facility.service";
 
 @Component({
   selector: 'app-facility-edit',
@@ -15,7 +15,7 @@ import {rentTypes} from "../../../assets/data/rent-type";
 })
 export class FacilityEditComponent implements OnInit {
   facility = {} as Facility;
-  facilities = facilities;
+  facilities: Facility[];
   villa: boolean = true;
   house: boolean = true;
   room: boolean = true;
@@ -31,6 +31,8 @@ export class FacilityEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.facilities = this.facilityService.getFacilityList();
+
     const routeParams = this.activatedRoute.snapshot.paramMap;
     const facilityIdFromRoute = routeParams.get('facilityId');
     this.facility = this.facilities.find(facility => facility.id === facilityIdFromRoute);
@@ -99,7 +101,7 @@ export class FacilityEditComponent implements OnInit {
     if(this.facilityForm.valid){
       this.submit = false;
       this.facilityService.editFacility(this.facilityForm.value);
-      this.router.navigate(['/facility-list']);
+      this.router.navigate(['/facility/list']);
     }
   }
 

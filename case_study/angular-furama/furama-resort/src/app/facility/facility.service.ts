@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Facility} from "../model/facility";
-import {facilities} from "../../assets/data/facility";
+import {Facility} from "./facility";
+import {facilities} from "./facility-data";
 import {element} from "protractor";
 
 @Injectable({

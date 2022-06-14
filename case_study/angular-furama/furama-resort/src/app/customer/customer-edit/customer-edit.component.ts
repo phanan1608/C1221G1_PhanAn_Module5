@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {customerTypes} from "../../../assets/data/customer-type";
-import {Customer} from "../../model/customer";
+import {customerTypes} from "../customer-type-data";
+import {Customer} from "../customer";
 import {ActivatedRoute, Router} from "@angular/router";
-import {customers} from "../../../assets/data/customer";
-import {CustomerService} from "../../service/customer.service";
+import {customers} from "../customer-data";
+import {CustomerService} from "../customer.service";
 
 @Component({
   selector: 'app-customer-edit',
@@ -62,7 +62,7 @@ export class CustomerEditComponent implements OnInit {
       this.submit = false;
       console.log(this.customerForm.value)
       this.customerService.editCustomer(this.customerForm.value);
-      this.router.navigate(['/customer-list']);
+      this.router.navigate(['/customer/list']);
     }
   }
   compareByID(itemOne, itemTwo) {

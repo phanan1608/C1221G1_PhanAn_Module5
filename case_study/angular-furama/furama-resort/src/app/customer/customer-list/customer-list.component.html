@@ -33,7 +33,7 @@
           <!--                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="ti-trash">&#xE15C;</i> <span>Delete</span></a>-->
           <!--                    </div>-->
           <div class="col-sm-6 d-flex justify-content-end">
-            <a [routerLink]="['/customer-create']" class="button button--bg-white button-form mx-2"><i class="ti-settings mr-1">&#xE147;</i> <span>Create Customer</span></a>
+            <a [routerLink]="['/customer/create']" class="button button--bg-white button-form mx-2"><i class="ti-settings mr-1">&#xE147;</i> <span>Create Customer</span></a>
             <!--                        <a href="#addEmployeeModal" class="button button&#45;&#45;active button-form" data-toggle="modal"><i class="ti-settings">&#xE147;</i> <span>Add New Customer</span></a>-->
             <a href="#deleteEmployeeModal" class="button button--bg-white button-form mx-2" data-toggle="modal"><i class="ti-trash mr-1">&#xE15C;</i> <span>Delete</span></a>
           </div>
@@ -92,7 +92,7 @@
           <td>{{item.idCard}}</td>
           <td>{{item.address}}</td>
           <td>
-            <a [routerLink]="['/customer-edit',item.code]" class="edit"><i class="ti-settings" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+            <a [routerLink]="['/customer/edit',item.code]" class="edit"><i class="ti-settings" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
             <a href="#deleteEmployeeModal" (click)="deleteModal(item.name,item.code)" class="delete" data-toggle="modal"><i class="ti-trash" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
           </td>
         </tr>

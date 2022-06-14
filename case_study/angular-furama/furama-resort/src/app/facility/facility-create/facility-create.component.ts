@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {facilityTypes} from "../../../assets/data/facility-type";
+import {facilityTypes} from "../facility-type-data";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {FacilityService} from "../../service/facility.service";
-import {FacilityType} from "../../model/facility-type";
-import {rentTypes} from "../../../assets/data/rent-type";
+import {FacilityType} from "../facility-type";
+import {rentTypes} from "../rent-type-data";
+import {Router} from "@angular/router";
+import {FacilityService} from "../facility.service";
 
 @Component({
   selector: 'app-facility-create',
@@ -21,7 +22,7 @@ export class FacilityCreateComponent implements OnInit {
   submit:boolean = false
 
 
-  constructor(private facilityService:FacilityService) {
+  constructor(private facilityService:FacilityService, private router:Router) {
   }
 
   ngOnInit(): void {
@@ -78,6 +79,7 @@ export class FacilityCreateComponent implements OnInit {
       this.submit = false;
       console.log(this.facilityForm.value);
       this.facilityService.addFacility(this.facilityForm.value);
+      this.router.navigateByUrl("/facility/list")
     }
   }
 }

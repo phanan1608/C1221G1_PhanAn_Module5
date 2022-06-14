@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ContractService} from "../../service/contract.service";
-import {customers} from "../../../assets/data/customer";
-import {facilities} from "../../../assets/data/facility";
+import {ContractService} from "../contract.service";
+import {customers} from "../../customer/customer-data";
+import {facilities} from "../../facility/facility-data";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 
@@ -38,7 +38,7 @@ export class ContractCreateComponent implements OnInit {
       this.submit = true;
       console.log(this.contractForm.value);
       this.contractService.addContract(this.contractForm.value);
-      this.router.navigate(['/contract-list']);
+      this.router.navigate(['/contract/list']);
     }
   }
 }

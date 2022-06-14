@@ -1,17 +1,36 @@
+<!-- ================ start banner area ================= -->
+<section class="contact-banner-area" id="contact">
+  <div class="container h-100">
+    <div class="contact-banner">
+      <div class="text-center">
+        <h1>{{facility.name}}</h1>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li aria-current="page" class="breadcrumb-item active">Detail Facility</li>
+          </ol>
+          <a [routerLink]="['/facility/list']">Back Facility List</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================ end banner area ================= -->
+
 <!-- Room Details Section Begin -->
 <section class="room-details-section spad">
   <div class="container">
     <div class="row">
       <div class="col-lg-8">
-        <div class="room-details-item">
+        <div class="room-details-item mt-5">
           <div>
             <img class="col-lg-12" height="500px"
-                 src="https://robbreport.com/wp-content/uploads/2015/08/the-cape-los-cabos-08.jpg" alt="">
+                 [src]="facility.image" alt="">
           </div>
 
           <div class="rd-text">
             <div class="rd-title items">
-              <h3>Premium King Room</h3>
+              <h3>{{facility.name}}</h3>
               <div class="rdt-right">
                 <div class="rating">
                   <i class="icon_star"></i>
@@ -23,40 +42,44 @@
                 <a class="button button-form button--active" href="#">Booking Now</a>
               </div>
             </div>
-            <h2>159$<span>/Pernight</span></h2>
+            <h2>{{facility.cost|currency:'USD':'symbol':'1.0-0'}}<span>/Pernight</span></h2>
             <table>
               <tbody>
               <div class="d-flex justify-content-between">
                 <div class="mr-5">
                   <tr>
                     <td class="r-o">Size:</td>
-                    <td>30 ft</td>
+                    <td><h6>{{facility.maxPeople}} people</h6></td>
                   </tr>
                   <tr>
                     <td class="r-o">Area:</td>
-                    <td>300 meter</td>
+                    <td><h6>{{facility.area}} feet</h6></td>
                   </tr>
                   <tr>
                     <td class="r-o">Floors:</td>
-                    <td>2 floors</td>
+                    <td><h6>{{facility.numberOfFloors}} floors</h6></td>
                   </tr>
                   <tr>
-                    <td class="r-o">Max People:</td>
-                    <td>5 people</td>
+                    <td class="r-o">Rent Type:</td>
+                    <td><h6>{{facility.rentType.name}}</h6></td>
                   </tr>
                 </div>
                 <div class="ml-5">
                   <tr>
                     <td class="r-o">Pool Area:</td>
-                    <td>50 meters</td>
+                    <td><h6>{{facility.poolArea}} feet</h6></td>
                   </tr>
                   <tr>
                     <td class="r-o">Standard:</td>
-                    <td>VIP</td>
+                    <td><h6>{{facility.standardRoom}}</h6></td>
                   </tr>
                   <tr>
                     <td class="r-o">Conveniences:</td>
-                    <td>Wifi, Television, Bathroom,...</td>
+                    <td><h6>{{facility.descriptionOtherConvenience}}</h6></td>
+                  </tr>
+                  <tr>
+                    <td class="r-o">Facility Type:</td>
+                    <td><h6>{{facility.facilityType.name}}</h6></td>
                   </tr>
                 </div>
               </div>
@@ -148,7 +171,7 @@
         </div>
       </div>
       <div class="col-lg-4">
-        <div class="room-booking">
+        <div class="room-booking mt-5">
           <h3>Your Reservation</h3>
           <form action="#">
             <div class="check-date">

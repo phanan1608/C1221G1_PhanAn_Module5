@@ -9,7 +9,7 @@
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li aria-current="page" class="breadcrumb-item active">Update Facilities</li>
           </ol>
-          <a [routerLink]="['/facility-list']">Back Facility List</a>
+          <a [routerLink]="['/facility/list']">Back Facility List</a>
         </nav>
       </div>
     </div>
@@ -22,9 +22,9 @@
 <form class="form-search form-search-position" [formGroup]="facilityForm" (ngSubmit)="onSubmit()">
   <div class="container">
     <div class="row">
-      <div class="col-lg-4 gutters-19">
+      <div class="">
         <div class="form-group">
-          <input class="form-control" readonly formControlName="id" placeholder="Enter Facility Code" required type="text">
+          <input class="form-control" readonly formControlName="id" placeholder="Enter Facility Code" required type="hidden">
           <div
             *ngIf="facilityForm.controls.id?.invalid&&(facilityForm.controls.id?.dirty || facilityForm.controls.id?.touched || submit)">
             <div *ngIf="facilityForm.controls.id?.errors.required">
@@ -37,7 +37,7 @@
         </div>
 
       </div>
-      <div class="col-lg-5 gutters-19">
+      <div class="col-lg-7 gutters-19">
         <div class="form-group">
           <input class="form-control" formControlName="name" placeholder="Enter Facility Name" required type="text">
           <div
@@ -51,7 +51,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 gutters-19">
+      <div class="col-lg-5 gutters-19">
         <div class="form-group">
           <input class="form-control" formControlName="cost" placeholder="Enter Cost" required type="text">
           <div
@@ -219,7 +219,7 @@
           </button>
         </div>
         <div class="col-6">
-          <a [routerLink]="['/facility-list']"
+          <a [routerLink]="['/facility/list']"
              class="button button--cancel cancel-banner-btn text-center col-12">Cancel</a>
         </div>
       </div>
