@@ -104,5 +104,4 @@ export class FacilityEditComponent implements OnInit {
       this.router.navigate(['/facility/list']);
     }
   }
-
 }

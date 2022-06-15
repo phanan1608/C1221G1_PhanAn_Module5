@@ -6,7 +6,6 @@ import {CustomerCreateComponent} from "./customer-create/customer-create.compone
 import {CustomerEditComponent} from "./customer-edit/customer-edit.component";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {BrowserModule} from "@angular/platform-browser";
 
 @NgModule({
   declarations: [

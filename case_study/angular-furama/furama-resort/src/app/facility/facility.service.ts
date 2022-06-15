@@ -24,13 +24,13 @@ export class FacilityService {
   }
 
   editFacility(facility: Facility) {
-    let index =  this.facilities.findIndex(element => element.id === facility.id)
-    this.facilities[index] = facility;
-   // for (let i=0;i<this.facilities.length ; i++){
-   //    if (this.facilities[i].id==facility.id){
-   //      this.facilities[i] = facility;
-   //    }
-   //  }
+    // let index =  this.facilities.findIndex(element => element.id === facility.id)
+    // this.facilities[index] = facility;
+   for (let i=0;i<this.facilities.length ; i++){
+      if (this.facilities[i].id==facility.id){
+        this.facilities[i] = facility;
+      }
+    }
 
   }
 

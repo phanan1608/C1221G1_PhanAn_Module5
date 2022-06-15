@@ -7,6 +7,7 @@ import {FacilityListComponent} from "./facility-list/facility-list.component";
 import {FacilityCreateComponent} from "./facility-create/facility-create.component";
 import {FacilityDetailsComponent} from "./facility-details/facility-details.component";
 import {FacilityEditComponent} from "./facility-edit/facility-edit.component";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import {FacilityEditComponent} from "./facility-edit/facility-edit.component";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class FacilityModule { }

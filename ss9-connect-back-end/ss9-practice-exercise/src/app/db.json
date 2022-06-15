@@ -1,0 +1,94 @@
+{
+  "categories": [
+    {
+      "id": 2,
+      "name": "Samsung"
+    },
+    {
+      "id": 3,
+      "name": "LG"
+    },
+    {
+      "id": 4,
+      "name": "Ip123"
+    },
+    {
+      "id": 5,
+      "name": "123"
+    }
+  ],
+  "products": [
+    {
+      "name": "IPhone 13",
+      "price": 12,
+      "description": "123",
+      "category": {
+        "id": 4,
+        "name": "Ip123"
+      },
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "IPhone 11",
+      "price": 1560000,
+      "description": "Like new",
+      "category": {
+        "id": 3,
+        "name": "LG"
+      }
+    },
+    {
+      "name": "IPhone X",
+      "price": 968,
+      "description": "97%",
+      "category": {
+        "id": 3,
+        "name": "LG"
+      },
+      "id": 3
+    },
+    {
+      "name": "IPhone 8",
+      "price": 7540000,
+      "description": "98%",
+      "category": {
+        "id": 3,
+        "name": "LG"
+      },
+      "id": 4
+    },
+    {
+      "id": 5,
+      "name": "IPhone 11 Pro",
+      "price": 1895000,
+      "description": "Like new",
+      "category": {
+        "id": 3,
+        "name": "LG"
+      }
+    },
+    {
+      "name": "123",
+      "price": 123,
+      "description": "123",
+      "category": {
+        "id": 3,
+        "name": "LG"
+      },
+      "id": 123
+    }
+  ],
+  "todos": [
+    {
+      "content": "A",
+      "complete": false,
+      "id": 1
+    },
+    {
+      "content": "a",
+      "complete": false,
+      "id": 2
+    }
+  ]
+}

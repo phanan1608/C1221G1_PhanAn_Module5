@@ -13,6 +13,7 @@ export class FacilityListComponent implements OnInit {
   facilities: Facility[];
   nameToDelete:string;
   idToDelete:string;
+  p: number = 1;
 
   constructor(private facilityService: FacilityService) { }
 

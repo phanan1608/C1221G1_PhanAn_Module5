@@ -1,0 +1,13 @@
+<h2 class="text-center">
+  Todo App
+</h2>
+<div class="col-md-8 offset-md-2">
+  <input type="text" class="form-control" [formControl]="content" (change)="change()">
+  <ul>
+    <li
+        *ngFor="let todo of todos; index as i">
+      <p (click)="toggleTodo(i)" [class.complete]="todo.complete">{{todo.content}}</p>
+       <a (click)="delete(todo.id)">Delete</a>
+    </li>
+  </ul>
+</div>

@@ -14,6 +14,7 @@ import {ContractCreateComponent} from './contract/contract-create/contract-creat
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ErrorComponent } from './error/error.component';
+import {NgxPaginationModule, PaginatePipe} from "ngx-pagination";
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ErrorComponent } from './error/error.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
