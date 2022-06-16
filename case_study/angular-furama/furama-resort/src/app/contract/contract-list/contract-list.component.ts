@@ -16,12 +16,15 @@ export class ContractListComponent implements OnInit {
   }
 
   contracts: Contract[];
-  // customers: Customer[] = this.customerService.getListCustomer();
-  // facilities: Facility[] = this.facilityService.getFacilityList();
 
   ngOnInit(): void {
-    this.contracts = this.contractService.getListContract();
+    this.getAll();
   }
 
+  getAll(){
+    this.contractService.getAll().subscribe(contracts =>{
+      this.contracts = contracts;
+    })
+  }
 
 }

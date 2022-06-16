@@ -175,17 +175,17 @@
     <div class="row" [hidden]="villa" id="villa_items">
       <div class="col-sm gutters-19">
         <div class="form-group">
-          <input class="form-control" name="url" placeholder="Enter Pool Area" required type="text">
+          <input class="form-control" formControlName="poolArea" name="url" placeholder="Enter Pool Area" required type="text">
         </div>
       </div>
       <div class="col-sm gutters-19">
         <div class="form-group">
-          <input class="form-control" name="url" placeholder="Enter Number Floor" required type="text">
+          <input class="form-control" formControlName="numberOfFloors" name="url" placeholder="Enter Number Floor" required type="text">
         </div>
       </div>
       <div class="col-lg gutters-19">
         <div class="form-group">
-          <input class="form-control" name="url" placeholder="Enter Description" required type="text">
+          <input class="form-control" formControlName="descriptionOtherConvenience" name="url" placeholder="Enter Description" required type="text">
         </div>
       </div>
     </div>
@@ -194,12 +194,12 @@
     <div class="row" [hidden]="house" id="house_items">
       <div class="col-sm gutters-19">
         <div class="form-group">
-          <input class="form-control" name="url" placeholder="Enter Number Floor" required type="text">
+          <input class="form-control" formControlName="numberOfFloors" name="url" placeholder="Enter Number Floor" required type="text">
         </div>
       </div>
       <div class="col-lg gutters-19">
         <div class="form-group">
-          <input class="form-control" name="url" placeholder="Enter Description" required type="text">
+          <input class="form-control" formControlName="descriptionOtherConvenience" name="url" placeholder="Enter Description" required type="text">
         </div>
       </div>
     </div>
@@ -208,7 +208,7 @@
     <div class="row" [hidden]="room" id="room_items">
       <div class="col-lg gutters-19">
         <div class="form-group">
-          <input class="form-control" name="url" placeholder="Enter Description" required type="text">
+          <input class="form-control" formControlName="descriptionOtherConvenience" name="url" placeholder="Enter Description" required type="text">
         </div>
       </div>
     </div>

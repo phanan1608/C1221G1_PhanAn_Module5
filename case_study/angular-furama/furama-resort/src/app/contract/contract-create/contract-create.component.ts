@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ContractService} from "../contract.service";
-import {customers} from "../../customer/customer-data";
-import {facilities} from "../../facility/facility-data";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {Customer} from "../../customer/customer";
+import {Facility} from "../../facility/facility";
+import {CustomerService} from "../../customer/customer.service";
+import {FacilityService} from "../../facility/facility.service";
 
 @Component({
   selector: 'app-contract-create',
@@ -12,14 +14,18 @@ import {Router} from "@angular/router";
 })
 export class ContractCreateComponent implements OnInit {
 
-  constructor(private contractService: ContractService, private router: Router) {
+  constructor(private contractService: ContractService, private router: Router,
+              private customerService: CustomerService, private  facilityService: FacilityService) {
   }
 
   ngOnInit(): void {
+    this.getCustomerList();
+    this.getFacilityList();
   }
+
   submit = false;
-  customers = customers;
-  facilities = facilities;
+  customers: Customer[];
+  facilities: Facility[];
 
   contractForm = new FormGroup({
     id: new FormControl("", [Validators.required, Validators.pattern("^HD-\\d{4}$")]),
@@ -31,14 +37,28 @@ export class ContractCreateComponent implements OnInit {
     facility: new FormControl("", [Validators.required]),
   })
 
+  getCustomerList(){
+    this.customerService.getAll().subscribe(customers => {
+      this.customers = customers;
+    })
+  }
+
+  getFacilityList(){
+    this.facilityService.getAll().subscribe(facilities => {
+      this.facilities = facilities;
+    })
+  }
 
   onSubmit() {
     this.submit = true
     if (this.contractForm.valid) {
       this.submit = true;
       console.log(this.contractForm.value);
-      this.contractService.addContract(this.contractForm.value);
-      this.router.navigate(['/contract/list']);
+      const value = this.contractForm.value;
+      this.contractService.saveContract(value).subscribe(() => {
+        alert('Create Successfully');
+        this.router.navigate(['/contract/list']);
+      });
     }
   }
 }

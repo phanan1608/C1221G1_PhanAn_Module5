@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {FacilityType} from "../facility-type";
 import {facilityTypes} from "../facility-type-data";
 import {Facility} from "../facility";
 import {ActivatedRoute, Router} from "@angular/router";
-import {facilities} from "../facility-data";
 import {rentTypes} from "../rent-type-data";
 import {FacilityService} from "../facility.service";
+import {FacilityTypeService} from "../facility-type.service";
+import {RentTypeService} from "../rent-type.service";
+import {RentType} from "../rent-type";
 
 @Component({
   selector: 'app-facility-edit',
@@ -20,54 +22,42 @@ export class FacilityEditComponent implements OnInit {
   house: boolean = true;
   room: boolean = true;
   selectedValue: any = 'null';
-  facilityTypes = facilityTypes;
-  rentTypes = rentTypes;
+  facilityTypes: FacilityType[];
+  rentTypes: RentType[];
   facilityForm: FormGroup;
-  submit:boolean = false;
+  submit: boolean = false;
 
 
-  constructor(private facilityService:FacilityService, private  activatedRoute:ActivatedRoute,
-              private router:Router) {
+  constructor(private facilityService: FacilityService, private  activatedRoute: ActivatedRoute,
+              private router: Router, private facilityTypeService: FacilityTypeService, private rentTypeService: RentTypeService) {
   }
 
   ngOnInit(): void {
-    this.facilities = this.facilityService.getFacilityList();
-
+    this.getFacilityTypeList();
+    this.getRentTypeList();
     const routeParams = this.activatedRoute.snapshot.paramMap;
     const facilityIdFromRoute = routeParams.get('facilityId');
-    this.facility = this.facilities.find(facility => facility.id === facilityIdFromRoute);
+    this.getFacilityUpdate(facilityIdFromRoute);
+  }
 
-    if (this.facility === undefined) {
-      this.router.navigate(['/error']);
-    }
-    this.changeValue(this.facility.facilityType);
-
-    this.facilityForm = new FormGroup({
-      id: new FormControl(this.facility.id, [Validators.required, Validators.pattern("^DV-\\d{4}$")]),
-      name: new FormControl(this.facility.name, [Validators.required, Validators.pattern("^([A-Z][a-z]*)+(\\s[A-Z][a-z]*)*$")]),
-      area: new FormControl(this.facility.area, [Validators.required, Validators.pattern("^\\+*\\d+$")]),
-      cost: new FormControl(this.facility.cost, [Validators.required, Validators.pattern("^\\+*\\d+$")]),
-      image: new FormControl(this.facility.image, [Validators.required]),
-      maxPeople: new FormControl(this.facility.maxPeople, [Validators.required, Validators.pattern("^\\+*\\d+$")]),
-      standardRoom: new FormControl(this.facility.standardRoom, [Validators.required]),
-      rentType: new FormControl(this.facility.rentType, [Validators.required]),
-      facilityType: new FormControl(this.facility.facilityType, [Validators.required]),
-      numberOfFloors: new FormControl(this.facility.numberOfFloors,),
-      descriptionOtherConvenience: new FormControl(this.facility.descriptionOtherConvenience,),
-      poolArea: new FormControl(this.facility.poolArea, ),
+  getFacilityTypeList(){
+    this.facilityTypeService.getAll().subscribe(facilityTypes => {
+      this.facilityTypes = facilityTypes;
+    })
+  }
+  getRentTypeList(){
+    this.rentTypeService.getAll().subscribe(rentTypes => {
+      this.rentTypes  =  rentTypes;
     })
   }
 
   compareFacilityTypeByID(itemOne, itemTwo) {
     return itemOne && itemTwo && itemOne.id == itemTwo.id;
   }
+
   compareRentTypeByID(itemOne, itemTwo) {
     return itemOne && itemTwo && itemOne.id == itemTwo.id;
   }
-
-
-
-
 
   changeValue(value: FacilityType) {
     console.log(value);
@@ -95,13 +85,39 @@ export class FacilityEditComponent implements OnInit {
     }
   }
 
+  getFacilityUpdate(id: string) {
+    return this.facilityService.findById(id).subscribe(facility => {
+      this.changeValue(facility.facilityType)
+      this.facilityForm = new FormGroup({
+        id: new FormControl(facility.id, [Validators.required, Validators.pattern("^DV-\\d{4}$")]),
+        name: new FormControl(facility.name, [Validators.required, Validators.pattern("^([A-Z][a-z]*)+(\\s[A-Z][a-z]*)*$")]),
+        area: new FormControl(facility.area, [Validators.required, Validators.pattern("^\\+*\\d+$")]),
+        cost: new FormControl(facility.cost, [Validators.required, Validators.pattern("^\\+*\\d+$")]),
+        image: new FormControl(facility.image, [Validators.required]),
+        maxPeople: new FormControl(facility.maxPeople, [Validators.required, Validators.pattern("^\\+*\\d+$")]),
+        standardRoom: new FormControl(facility.standardRoom, [Validators.required]),
+        rentType: new FormControl(facility.rentType, [Validators.required]),
+        facilityType: new FormControl(facility.facilityType, [Validators.required]),
+        numberOfFloors: new FormControl(facility.numberOfFloors,),
+        descriptionOtherConvenience: new FormControl(facility.descriptionOtherConvenience,),
+        poolArea: new FormControl(facility.poolArea,),
+      })
+    }, error => {
+      this.router.navigate(['/error']);
+    });
+  }
+
   onSubmit() {
-    console.log(this.facilityForm.value);
+    console.log(this.facilityForm)
     this.submit = true;
-    if(this.facilityForm.valid){
+    if (this.facilityForm.valid) {
       this.submit = false;
-      this.facilityService.editFacility(this.facilityForm.value);
-      this.router.navigate(['/facility/list']);
+      console.log(this.facilityForm.value)
+      const value = this.facilityForm.value;
+      this.facilityService.updateFacility(value).subscribe(() => {
+        alert("Update Successfully");
+        this.router.navigate(['/facility/list']);
+      });
     }
   }
 }

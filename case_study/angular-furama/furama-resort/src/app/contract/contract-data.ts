@@ -6,7 +6,7 @@ export const contracts = [
     deposit: 0,
     totalMoney: 1000000,
     customer: {
-      code: 'KH-0001',
+      id: 'KH-0001',
       name: 'Nguyễn Thị Hào',
       birthDay: '1970-11-07',
       gender: 0,
@@ -48,7 +48,7 @@ export const contracts = [
     deposit: 200000,
     totalMoney: 2000000,
     customer: {
-      code: 'KH-0003',
+      id: 'KH-0003',
       name: 'Trương Đình Nghệ',
       birthDay: '1990-02-27',
       gender: 1,
@@ -90,7 +90,7 @@ export const contracts = [
     deposit: 100000,
     totalMoney: 1400000,
     customer: {
-      code: 'KH-0005',
+      id: 'KH-0005',
       name: 'Hoàng Trần Nhi Nhi',
       birthDay: '1995-12-09',
       gender: 0,
@@ -132,7 +132,7 @@ export const contracts = [
     deposit: 0,
     totalMoney: 100000,
     customer: {
-      code: 'KH-0006',
+      id: 'KH-0006',
       name: 'Tôn Nữ Mộc Châu',
       birthDay: '2005-12-06',
       gender: 0,

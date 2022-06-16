@@ -1073,10 +1073,12 @@ button {
 
 .card-explore__price {
   font-size: 40px;
+  color: #cca772;
 }
 
 .card-explore__price sub {
-  font-size: 18px;
+  font-size: 16px;
+  color: #222222;
 }
 
 .card-explore__title {

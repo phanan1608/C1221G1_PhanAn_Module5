@@ -19,15 +19,18 @@ export class FacilityDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.facilities = this.facilityService.getFacilityList();
     const routeParams = this.activatedRoute.snapshot.paramMap;
     const facilityIdFromRoute = routeParams.get('facilityId');
-    this.facility = this.facilities.find(facility => facility.id === facilityIdFromRoute);
+    this.getFacilityDetail(facilityIdFromRoute);
 
-    if (this.facility === undefined) {
+  }
+
+  getFacilityDetail(id:string){
+    return this.facilityService.findById(id).subscribe(facility => {
+        this.facility = facility;
+    }, error => {
       this.router.navigate(['/error']);
-    }
-
+    });
   }
 
   compareFacilityTypeByID(itemOne, itemTwo) {

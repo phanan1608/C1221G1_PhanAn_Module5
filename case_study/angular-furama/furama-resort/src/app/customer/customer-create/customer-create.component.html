@@ -24,13 +24,13 @@
     <div class="row">
       <div class="col-lg-3 gutters-19">
         <div class="form-group">
-          <input  placeholder="Enter Customer Code" class="form-control" type="text" formControlName="code">
+          <input  placeholder="Enter Customer Code" class="form-control" type="text" formControlName="id">
           <div
-            *ngIf="customerForm.controls.code?.invalid&&(customerForm.controls.code?.dirty || customerForm.controls.code?.touched || submit)">
-            <div *ngIf="customerForm.controls.code?.errors.required">
+            *ngIf="customerForm.controls.id?.invalid&&(customerForm.controls.id?.dirty || customerForm.controls.id?.touched || submit)">
+            <div *ngIf="customerForm.controls.id?.errors.required">
               <small class="form-text text-muted">Code can not bank</small>
             </div>
-            <div *ngIf="customerForm.controls.code?.errors.pattern">
+            <div *ngIf="customerForm.controls.id?.errors.pattern">
               <small class="form-text text-muted">Invalid Code</small>
             </div>
           </div>
@@ -72,7 +72,7 @@
             <option disabled selected value="">Gender</option>
             <option value="0">Female</option>
             <option value="1">Male</option>
-            <option value="2">Other</option>
+            <option value="-1">Other</option>
           </select>
           <div
             *ngIf="customerForm.controls.gender?.invalid&&(customerForm.controls.gender?.dirty || customerForm.controls.gender?.touched || submit)">

@@ -2,7 +2,11 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Facility} from "./facility";
 import {facilities} from "./facility-data";
-import {element} from "protractor";
+import {environment} from "../../environments/environment";
+import {Observable} from "rxjs";
+import {Customer} from "../customer/customer";
+
+const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
   providedIn: 'root'
@@ -10,31 +14,27 @@ import {element} from "protractor";
 
 export class FacilityService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
-  private facilities: Facility[] = facilities;
 
-  getFacilityList() {
-    return this.facilities;
+  getAll(): Observable<Facility[]> {
+    return this.http.get<Facility[]>(API_URL + '/facilities');
   }
 
-  addFacility(facility:Facility){
-    this.facilities.push(facility)
+  saveFacility(facility): Observable<Facility> {
+    return this.http.post<Facility>(API_URL + '/facilities', facility);
   }
 
-  editFacility(facility: Facility) {
-    // let index =  this.facilities.findIndex(element => element.id === facility.id)
-    // this.facilities[index] = facility;
-   for (let i=0;i<this.facilities.length ; i++){
-      if (this.facilities[i].id==facility.id){
-        this.facilities[i] = facility;
-      }
-    }
-
+  findById(id: string): Observable<Facility> {
+    return this.http.get<Facility>(`${API_URL}/facilities/${id}`);
   }
 
-  delete(idToDelete: string) {
-    this.facilities =  this.facilities.filter(customer => customer.id!=idToDelete);
+  updateFacility(facility: Facility): Observable<Facility> {
+    return this.http.put<Facility>(`${API_URL}/facilities/${facility.id}`, facility);
+  }
+
+  deleteFacility(id: string): Observable<Facility> {
+    return this.http.delete<Facility>(`${API_URL}/facilities/${id}`);
   }
 }

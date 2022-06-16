@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Customer} from "../customer";
-import {CustomerType} from "../customer-type";
 import {CustomerService} from "../customer.service";
-import {customerTypes} from "../customer-type-data";
 
 @Component({
   selector: 'app-customer-list',
@@ -10,26 +8,35 @@ import {customerTypes} from "../customer-type-data";
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-  constructor(private customerService:CustomerService) { }
-
-  customers:Customer[] ;
-
-  customerTypes:CustomerType[] = customerTypes;
-  customerToDelete: string;
-  idToDelete: string;
-
-  ngOnInit(): void {
-   this.customers= this.customerService.getListCustomer();
+  constructor(private customerService: CustomerService) {
   }
 
+  customers: Customer[];
 
-  deleteModal(name: string,code:string) {
+  customerToDelete: string;
+  idToDelete: string;
+  p: number;
+
+  ngOnInit(): void {
+    this.getAll()
+  }
+
+  getAll() {
+    this.customerService.getAll().subscribe(customers => {
+      this.customers = customers;
+    });
+  }
+
+  deleteModal(name: string, code: string) {
     this.customerToDelete = name;
     this.idToDelete = code;
   }
 
   deleteCustomer() {
-    this.customerService.delete(this.idToDelete);
-    this.ngOnInit()
+    this.customerService.deleteCustomer(this.idToDelete).subscribe(() => {
+        this.customerService.deleteCustomer(this.idToDelete);
+        this.ngOnInit();
+      }
+    );
   }
 }

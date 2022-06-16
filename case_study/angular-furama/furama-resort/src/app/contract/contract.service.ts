@@ -1,21 +1,23 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
+import {Observable} from "rxjs";
 import {Contract} from "./contract";
-import {contracts} from "./contract-data";
+
+const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContractService {
-  constructor(private httpClient: HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
-  private contracts: Contract[] = contracts;
-
-  getListContract(){
-    return this.contracts;
+  getAll(): Observable<Contract[]> {
+    return this.http.get<Contract[]>(API_URL + '/contracts');
   }
-  addContract(contract:Contract){
-    this.contracts.push(contract);
+
+  saveContract(contract): Observable<Contract> {
+    return this.http.post<Contract>(API_URL + '/contracts', contract);
   }
 }

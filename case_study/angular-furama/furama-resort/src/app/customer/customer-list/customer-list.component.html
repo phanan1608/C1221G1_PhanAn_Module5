@@ -58,7 +58,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let item of customers">
+        <tr *ngFor="let item of customers | paginate : { itemsPerPage: 6, currentPage: p }; index as i">
           <td>
 							<span class="custom-checkbox">
 								<input type="checkbox" id="checkbox1" name="options[]" value="1">
@@ -77,7 +77,7 @@
                 <a href="@{/customer/view/{id}(id=${customer.customerId})}">
                   <p style="word-break: break-all;" class="fw-bold mb-1">{{item.name}}</p>
                 </a>
-                <p class="text-muted mb-0">{{item.code}}</p>
+                <p class="text-muted mb-0">{{item.id}}</p>
                 <span class="badge rounded-pill badge-primary" style="background-color: #cca772">{{item.customerType.name}}</span>
               </div>
             </div>
@@ -89,26 +89,18 @@
           <td>{{item.birthDay|date:"dd-MM- yyyy"}}</td>
           <td *ngIf="item.gender== 0 ">Female</td>
           <td *ngIf="item.gender== 1 ">Male</td>
+          <td *ngIf="item.gender== -1 ">Other</td>
           <td>{{item.idCard}}</td>
           <td>{{item.address}}</td>
           <td>
-            <a [routerLink]="['/customer/edit',item.code]" class="edit"><i class="ti-settings" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-            <a href="#deleteEmployeeModal" (click)="deleteModal(item.name,item.code)" class="delete" data-toggle="modal"><i class="ti-trash" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+            <a [routerLink]="['/customer/edit',item.id]" class="edit"><i class="ti-settings" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+            <a href="#deleteEmployeeModal" (click)="deleteModal(item.name,item.id)" class="delete" data-toggle="modal"><i class="ti-trash" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
           </td>
         </tr>
         </tbody>
       </table>
-      <div class="clearfix">
-        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-        <ul class="pagination">
-          <li class="page-item disabled"><a href="#">Previous</a></li>
-          <li class="page-item"><a href="#" class="page-link">1</a></li>
-          <li class="page-item"><a href="#" class="page-link">2</a></li>
-          <li class="page-item active"><a href="#" class="page-link">3</a></li>
-          <li class="page-item"><a href="#" class="page-link">4</a></li>
-          <li class="page-item"><a href="#" class="page-link">5</a></li>
-          <li class="page-item"><a href="#" class="page-link">Next</a></li>
-        </ul>
+      <div style="justify-content: space-around;display: flex;">
+        <pagination-controls (pageChange)="p = $event" class="page-item"></pagination-controls>
       </div>
     </div>
   </div>
@@ -189,16 +181,16 @@
     <div class="modal-content">
       <form>
         <div class="modal-header">
-          <h4 class="modal-title">Delete Employee</h4>
+          <h4 class="modal-title">Delete Customer</h4>
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
         <div class="modal-body">
-          <p>Are you sure you want to delete {{customerToDelete}} </p>
+          <p>Are you sure you want to delete <span style="color: #cca772; font-weight: bold">{{customerToDelete}}</span>? </p>
           <p class="text-warning"><small>This action cannot be undone.</small></p>
         </div>
         <div class="modal-footer">
-          <input type="button" class="button button--cancel cancel-banner-btn" data-dismiss="modal" value="Cancel">
           <input (click)="deleteCustomer()" type="submit" class="button button--active button-form" data-dismiss="modal" value="Delete">
+          <input type="button" class="button button--cancel cancel-banner-btn" data-dismiss="modal" value="Cancel">
         </div>
       </form>
     </div>
