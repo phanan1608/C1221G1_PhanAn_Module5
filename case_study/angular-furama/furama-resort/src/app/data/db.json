@@ -171,7 +171,7 @@
       "id": "DV-0001",
       "name": "Villa Beach Front",
       "area": 25000,
-      "cost": "9999",
+      "cost": "999",
       "image": "../../../assets/img/home/room-5.png",
       "maxPeople": 10,
       "standardRoom": "vip",
@@ -235,7 +235,7 @@
       "cost": 9000,
       "maxPeople": 8,
       "standardRoom": "normal",
-      "descriptionOtherConvenience": "Có hồ bơi",
+      "descriptionOtherConvenience": "Pool",
       "poolArea": 300,
       "numberOfFloors": 3,
       "rentType": {
@@ -304,8 +304,28 @@
         "name": "Villa"
       },
       "numberOfFloors": "1",
-      "descriptionOtherConvenience": "Buffet sáng",
+      "descriptionOtherConvenience": "Buffet morning",
       "poolArea": "500"
+    },
+    {
+      "id": "DV-0018",
+      "name": "Room",
+      "area": "111",
+      "cost": "123",
+      "image": "../../../assets/img/home/room-2.png",
+      "maxPeople": "123",
+      "standardRoom": "1",
+      "rentType": {
+        "id": 1,
+        "name": "year"
+      },
+      "facilityType": {
+        "id": 1,
+        "name": "Villa"
+      },
+      "numberOfFloors": "12",
+      "descriptionOtherConvenience": "12",
+      "poolArea": "1"
     }
   ],
   "contracts": [
@@ -548,7 +568,7 @@
         "cost": 9000,
         "maxPeople": 8,
         "standardRoom": "normal",
-        "descriptionOtherConvenience": "Có hồ bơi",
+        "descriptionOtherConvenience": "Pool",
         "poolArea": 300,
         "numberOfFloors": 3,
         "rentType": {
@@ -560,28 +580,72 @@
           "name": "Villa"
         }
       }
+    },
+    {
+      "id": "HD-0011",
+      "startDate": "2022-12-12",
+      "endDate": "2022-12-12",
+      "deposit": 12,
+      "totalMoney": 12,
+      "customer": {
+        "customerId": "KH-0008",
+        "customerCode": null,
+        "customerName": "Nguyễn Thị Hào",
+        "customerBirthday": "1999-04-08",
+        "customerGender": 0,
+        "customerIdCard": "965656433",
+        "customerPhone": "0763212345",
+        "customerEmail": "haohao99@gmail.com",
+        "customerAddress": "55 Nguyễn Văn Linh, Kon Tum",
+        "urlImage": "https://mdbootstrap.com/img/new/avatars/19.jpg",
+        "status": true,
+        "customerType": {
+          "customerTypeId": 3,
+          "customerTypeName": "Gold"
+        }
+      },
+      "facility": {
+        "id": "DV-0003",
+        "name": "Room Twin",
+        "area": 5000,
+        "cost": 1000,
+        "image": "../../../assets/img/home/room-6.png",
+        "maxPeople": 2,
+        "standardRoom": "normal",
+        "rentType": {
+          "id": 4,
+          "name": "hour"
+        },
+        "facilityType": {
+          "id": 3,
+          "name": "Room"
+        },
+        "numberOfFloors": 0,
+        "descriptionOtherConvenience": "Televison",
+        "poolArea": 0
+      }
     }
   ],
   "customerTypes": [
     {
-      "id": 1,
-      "name": "Diamond"
+      "customerTypeId": 1,
+      "customerTypeName": "Diamond"
     },
     {
-      "id": 2,
-      "name": "Platinum"
+      "customerTypeId": 2,
+      "customerTypeName": "Platinum"
     },
     {
-      "id": 3,
-      "name": "Gold"
+      "customerTypeId": 3,
+      "customerTypeName": "Gold"
     },
     {
-      "id": 4,
-      "name": "Silver"
+      "customerTypeId": 4,
+      "customerTypeName": "Silver"
     },
     {
-      "id": 5,
-      "name": "Member"
+      "customerTypeId": 5,
+      "customerTypeName": "Member"
     }
   ],
   "facilityTypes": [

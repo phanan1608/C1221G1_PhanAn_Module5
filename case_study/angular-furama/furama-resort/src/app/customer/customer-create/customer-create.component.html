@@ -22,45 +22,45 @@
 <form class="form-search form-search-position" [formGroup]="customerForm" (ngSubmit)="onSubmit()">
   <div class="container">
     <div class="row">
-      <div class="col-lg-3 gutters-19">
-        <div class="form-group">
-          <input  placeholder="Enter Customer Code" class="form-control" type="text" formControlName="id">
-          <div
-            *ngIf="customerForm.controls.id?.invalid&&(customerForm.controls.id?.dirty || customerForm.controls.id?.touched || submit)">
-            <div *ngIf="customerForm.controls.id?.errors.required">
-              <small class="form-text text-muted">Code can not bank</small>
-            </div>
-            <div *ngIf="customerForm.controls.id?.errors.pattern">
-              <small class="form-text text-muted">Invalid Code</small>
-            </div>
-          </div>
-        </div>
-      </div>
+<!--      <div class="col-lg-3 gutters-19">-->
+<!--        <div class="form-group">-->
+<!--          <input  placeholder="Enter Customer Code" class="form-control" type="text" formControlName="id">-->
+<!--          <div-->
+<!--            *ngIf="customerForm.controls.id?.invalid&&(customerForm.controls.id?.dirty || customerForm.controls.id?.touched || submit)">-->
+<!--            <div *ngIf="customerForm.controls.id?.errors.required">-->
+<!--              <small class="form-text text-muted">Code can not bank</small>-->
+<!--            </div>-->
+<!--            <div *ngIf="customerForm.controls.id?.errors.pattern">-->
+<!--              <small class="form-text text-muted">Invalid Code</small>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
       <div class="col-lg-4 gutters-19">
         <div class="form-group">
           <input id="name" class="form-control" placeholder="Enter Customer Name" required type="text"
-                 formControlName="name">
+                 formControlName="customerName">
           <div
-            *ngIf="customerForm.controls.name?.invalid&&(customerForm.controls.name?.dirty || customerForm.controls.name?.touched || submit)">
-            <div *ngIf="customerForm.controls.name?.errors.required">
-              <small class="form-text text-muted">Email can not bank</small>
+            *ngIf="customerForm.controls.customerName?.invalid&&(customerForm.controls.customerName?.dirty || customerForm.controls.customerName?.touched || submit)">
+            <div *ngIf="customerForm.controls.customerName?.errors.required">
+              <small class="form-text text-muted">Name can not bank</small>
             </div>
-            <div *ngIf="customerForm.controls.name?.errors.pattern">
-              <small class="form-text text-muted">Invalid Email</small>
+            <div *ngIf="customerForm.controls.customerName?.errors.pattern">
+              <small class="form-text text-muted">Invalid Name</small>
             </div>
           </div>
         </div>
       </div>
       <div class="col-lg-3 gutters-19">
         <div class="form-group">
-          <input id="birthday" placeholder="Enter Birthday" class="form-control" type="text" formControlName="birthDay"
+          <input id="birthday" placeholder="Enter Birthday" class="form-control" type="text" formControlName="customerBirthday"
                  onfocus="(this.type='date')">
           <div
-            *ngIf="customerForm.controls.birthDay?.invalid&&(customerForm.controls.birthDay?.dirty || customerForm.controls.birthDay?.touched || submit)">
-            <div *ngIf="customerForm.controls.birthDay?.errors.required">
+            *ngIf="customerForm.controls.customerBirthday?.invalid&&(customerForm.controls.customerBirthday?.dirty || customerForm.controls.customerBirthday?.touched || submit)">
+            <div *ngIf="customerForm.controls.customerBirthday?.errors.required">
               <small class="form-text text-muted">Birthday can not bank</small>
             </div>
-            <div *ngIf="customerForm.controls.birthDay?.errors.pattern">
+            <div *ngIf="customerForm.controls.customerBirthday?.errors.pattern">
               <small class="form-text text-muted">Invalid birthday</small>
             </div>
           </div>
@@ -68,15 +68,15 @@
       </div>
       <div class="col-lg-2  gutters-19">
         <div class="form-group form-select-custom">
-          <select id="gender" formControlName="gender">
+          <select id="gender" formControlName="customerGender">
             <option disabled selected value="">Gender</option>
             <option value="0">Female</option>
             <option value="1">Male</option>
             <option value="-1">Other</option>
           </select>
           <div
-            *ngIf="customerForm.controls.gender?.invalid&&(customerForm.controls.gender?.dirty || customerForm.controls.gender?.touched || submit)">
-            <div *ngIf="customerForm.controls.gender?.errors.required">
+            *ngIf="customerForm.controls.customerGender?.invalid&&(customerForm.controls.customerGender?.dirty || customerForm.controls.customerGender?.touched || submit)">
+            <div *ngIf="customerForm.controls.customerGender?.errors.required">
               <small class="form-text text-muted">Gender can not bank</small>
             </div>
           </div>
@@ -86,13 +86,13 @@
     <div class="row">
       <div class="col-lg-4 gutters-19">
         <div class="form-group">
-          <input class="form-control" placeholder="Enter ID Card" formControlName="idCard" required type="text">
+          <input class="form-control" placeholder="Enter ID Card" formControlName="customerIdCard" required type="text">
           <div
-            *ngIf="customerForm.controls.idCard?.invalid&&(customerForm.controls.idCard?.dirty || customerForm.controls.idCard?.touched || submit)">
-            <div *ngIf="customerForm.controls.idCard?.errors.required">
+            *ngIf="customerForm.controls.customerIdCard?.invalid&&(customerForm.controls.customerIdCard?.dirty || customerForm.controls.customerIdCard?.touched || submit)">
+            <div *ngIf="customerForm.controls.customerIdCard?.errors.required">
               <small class="form-text text-muted">ID Card can not bank</small>
             </div>
-            <div *ngIf="customerForm.controls.idCard?.errors.pattern">
+            <div *ngIf="customerForm.controls.customerIdCard?.errors.pattern">
               <small class="form-text text-muted">Invalid ID Card</small>
             </div>
           </div>
@@ -100,13 +100,13 @@
       </div>
       <div class="col-lg-4 gutters-19">
         <div class="form-group">
-          <input class="form-control" placeholder="Enter Phone Number" formControlName="phone" required type="text">
+          <input class="form-control" placeholder="Enter Phone Number" formControlName="customerPhone" required type="text">
           <div
-            *ngIf="customerForm.controls.phone?.invalid&&(customerForm.controls.phone?.dirty || customerForm.controls.phone?.touched || submit)">
-            <div *ngIf="customerForm.controls.phone?.errors.required">
+            *ngIf="customerForm.controls.customerPhone?.invalid&&(customerForm.controls.customerPhone?.dirty || customerForm.controls.customerPhone?.touched || submit)">
+            <div *ngIf="customerForm.controls.customerPhone?.errors.required">
               <small class="form-text text-muted">Phone Number can not bank</small>
             </div>
-            <div *ngIf="customerForm.controls.phone?.errors.pattern">
+            <div *ngIf="customerForm.controls.customerPhone?.errors.pattern">
               <small class="form-text text-muted">Invalid Phone Number</small>
             </div>
           </div>
@@ -114,13 +114,13 @@
       </div>
       <div class="col-lg-4  gutters-19">
         <div class="form-group">
-          <input class="form-control" placeholder="Enter Email" formControlName="email" required type="text">
+          <input class="form-control" placeholder="Enter Email" formControlName="customerEmail" required type="text">
           <div
-            *ngIf="customerForm.controls.email?.invalid&&(customerForm.controls.email?.dirty || customerForm.controls.email?.touched || submit)">
-            <div *ngIf="customerForm.controls.email?.errors.required">
+            *ngIf="customerForm.controls.customerEmail?.invalid&&(customerForm.controls.customerEmail?.dirty || customerForm.controls.customerEmail?.touched || submit)">
+            <div *ngIf="customerForm.controls.customerEmail?.errors.required">
               <small class="form-text text-muted">Email can not bank</small>
             </div>
-            <div *ngIf="customerForm.controls.email?.errors.email">
+            <div *ngIf="customerForm.controls.customerEmail?.errors.email">
               <small class="form-text text-muted">Invalid Email</small>
             </div>
           </div>
@@ -130,13 +130,13 @@
     <div class="row">
       <div class="col-lg gutters-19">
         <div class="form-group">
-          <input class="form-control" placeholder="Enter Address" formControlName="address" required type="text">
+          <input class="form-control" placeholder="Enter Address" formControlName="customerAddress" required type="text">
           <div
-            *ngIf="customerForm.controls.address?.invalid&&(customerForm.controls.address?.dirty || customerForm.controls.address?.touched || submit)">
-            <div *ngIf="customerForm.controls.address?.errors.required">
+            *ngIf="customerForm.controls.customerAddress?.invalid&&(customerForm.controls.customerAddress?.dirty || customerForm.controls.customerAddress?.touched || submit)">
+            <div *ngIf="customerForm.controls.customerAddress?.errors.required">
               <small class="form-text text-muted">Address can not bank</small>
             </div>
-            <div *ngIf="customerForm.controls.address?.errors.pattern">
+            <div *ngIf="customerForm.controls.customerAddress?.errors.pattern">
               <small class="form-text text-muted">Invalid Address</small>
             </div>
           </div>
@@ -144,13 +144,13 @@
       </div>
       <div class="col-lg gutters-19">
         <div class="form-group">
-          <input class="form-control" placeholder="Enter URL Image" formControlName="image" required type="text">
+          <input class="form-control" placeholder="Enter URL Image" formControlName="urlImage" required type="text">
           <div
-            *ngIf="customerForm.controls.image?.invalid&&(customerForm.controls.image?.dirty || customerForm.controls.image?.touched || submit)">
-            <div *ngIf="customerForm.controls.image?.errors.required">
+            *ngIf="customerForm.controls.urlImage?.invalid&&(customerForm.controls.urlImage?.dirty || customerForm.controls.urlImage?.touched || submit)">
+            <div *ngIf="customerForm.controls.urlImage?.errors.required">
               <small class="form-text text-muted">URL Image can not bank</small>
             </div>
-            <div *ngIf="customerForm.controls.image?.errors.pattern">
+            <div *ngIf="customerForm.controls.urlImage?.errors.pattern">
               <small class="form-text text-muted">Invalid URL Image</small>
             </div>
           </div>
@@ -160,7 +160,7 @@
         <div class="form-group form-select-custom">
           <select id="" formControlName="customerType">
             <option disabled selected value="">Customer Type</option>
-            <option [ngValue]="type" *ngFor="let type of customerTypes">{{type.name}}</option>
+            <option [ngValue]="type" *ngFor="let type of customerTypes">{{type.customerTypeName}}</option>
           </select>
 
           <div

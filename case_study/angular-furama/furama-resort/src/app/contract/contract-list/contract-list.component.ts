@@ -12,7 +12,8 @@ import {CustomerService} from "../../customer/customer.service";
 export class ContractListComponent implements OnInit {
 
 
-  constructor(private contractService: ContractService, private customerService: CustomerService, private facilityService: FacilityService) {
+  constructor(private contractService: ContractService, private customerService: CustomerService,
+              private facilityService: FacilityService) {
   }
 
   contracts: Contract[];

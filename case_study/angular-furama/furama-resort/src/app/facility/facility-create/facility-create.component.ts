@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {facilityTypes} from "../facility-type-data";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {FacilityType} from "../facility-type";
-import {rentTypes} from "../rent-type-data";
 import {Router} from "@angular/router";
 import {FacilityService} from "../facility.service";
 import {RentType} from "../rent-type";
@@ -22,10 +20,10 @@ export class FacilityCreateComponent implements OnInit {
   facilityTypes: FacilityType[];
   rentTypes: RentType[];
   facilityForm: FormGroup;
-  submit:boolean = false
+  submit: boolean = false
 
 
-  constructor(private facilityService:FacilityService, private router:Router,
+  constructor(private facilityService: FacilityService, private router: Router,
               private facilityTypeService: FacilityTypeService, private rentTypeService: RentTypeService) {
   }
 
@@ -33,33 +31,38 @@ export class FacilityCreateComponent implements OnInit {
     this.getFacilityTypeList();
     this.getRentTypeList();
     this.facilityForm = new FormGroup({
-      id: new FormControl("", [Validators.required, Validators.pattern("^DV-\\d{4}$")]),
-      name: new FormControl("", [Validators.required, Validators.pattern("^([A-Z][a-z]*)+(\\s[A-Z][a-z]*)*$")]),
-      area: new FormControl("", [Validators.required, Validators.pattern("^\\+*\\d+$")]),
-      cost: new FormControl("", [Validators.required, Validators.pattern("^\\+*\\d+$")]),
+      id: new FormControl("", [Validators.required,
+        Validators.pattern("^DV-\\d{4}$")]),
+      name: new FormControl("", [Validators.required,
+        Validators.pattern("^([A-Z][a-z]*)+(\\s[A-Z][a-z]*)*$")]),
+      area: new FormControl("", [Validators.required,
+        Validators.pattern("^\\+*\\d+$")]),
+      cost: new FormControl("", [Validators.required,
+        Validators.pattern("^\\+*\\d+$")]),
       image: new FormControl("", [Validators.required]),
-      maxPeople: new FormControl("", [Validators.required, Validators.pattern("^\\+*\\d+$")]),
+      maxPeople: new FormControl("", [Validators.required,
+        Validators.pattern("^\\+*\\d+$")]),
       standardRoom: new FormControl("", [Validators.required]),
       rentType: new FormControl("", [Validators.required]),
       facilityType: new FormControl("", [Validators.required]),
       numberOfFloors: new FormControl("",),
       descriptionOtherConvenience: new FormControl("",),
-      poolArea: new FormControl("", ),
+      poolArea: new FormControl("",),
     })
   }
 
 
-  getFacilityTypeList(){
+  getFacilityTypeList() {
     this.facilityTypeService.getAll().subscribe(facilityTypes => {
       this.facilityTypes = facilityTypes;
     })
   }
-  getRentTypeList(){
+
+  getRentTypeList() {
     this.rentTypeService.getAll().subscribe(rentTypes => {
-      this.rentTypes  =  rentTypes;
+      this.rentTypes = rentTypes;
     })
   }
-
 
 
   changeValue(value: FacilityType) {
@@ -90,7 +93,8 @@ export class FacilityCreateComponent implements OnInit {
 
   onSubmit() {
     this.submit = true;
-    if (this.facilityForm.valid){
+    console.log(this.facilityForm);
+    if (this.facilityForm.valid) {
       this.submit = false;
       console.log(this.facilityForm.value);
       const value = this.facilityForm.value;

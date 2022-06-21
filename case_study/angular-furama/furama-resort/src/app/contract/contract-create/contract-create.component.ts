@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {ContractService} from "../contract.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Customer} from "../../customer/customer";
 import {Facility} from "../../facility/facility";
 import {CustomerService} from "../../customer/customer.service";
 import {FacilityService} from "../../facility/facility.service";
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-contract-create',
@@ -28,22 +30,44 @@ export class ContractCreateComponent implements OnInit {
   facilities: Facility[];
 
   contractForm = new FormGroup({
-    id: new FormControl("", [Validators.required, Validators.pattern("^HD-\\d{4}$")]),
-    startDate: new FormControl("", [Validators.required, Validators.pattern("^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$")]),
-    endDate: new FormControl("", [Validators.required, Validators.pattern("^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$")]),
-    deposit: new FormControl("", [Validators.required, Validators.pattern("^\\+*\\d+$")]),
-    totalMoney: new FormControl("", [Validators.required, Validators.pattern("^\\+*\\d+$")]),
+    id: new FormControl("", [Validators.required,
+      Validators.pattern("^HD-\\d{4}$")]),
+    startDate: new FormControl("", [Validators.required,
+      Validators.pattern("^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$")]),
+    endDate: new FormControl("", [Validators.required,
+      Validators.pattern("^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$")]),
+    deposit: new FormControl("", [Validators.required,
+      Validators.pattern("^\\+*\\d+$")]),
+    totalMoney: new FormControl("", [Validators.required,
+      Validators.pattern("^\\+*\\d+$")]),
     customer: new FormControl("", [Validators.required]),
     facility: new FormControl("", [Validators.required]),
-  })
+  },[this.checkDate])
 
-  getCustomerList(){
+
+
+  checkDate(date: AbstractControl){
+    let now = moment();
+    let startDate = moment(date.get('startDate').value);
+    let endDate =  moment(date.get('endDate').value);
+    if (now.diff(startDate)>0){
+      return {startDate: true};
+    }
+    if (now.diff(endDate)>0){
+      return {endDate: true};
+    }
+    else if (endDate.diff(startDate)<0){
+      return {startEndDate: true}
+    }
+  }
+
+  getCustomerList() {
     this.customerService.getAll().subscribe(customers => {
       this.customers = customers;
     })
   }
 
-  getFacilityList(){
+  getFacilityList() {
     this.facilityService.getAll().subscribe(facilities => {
       this.facilities = facilities;
     })

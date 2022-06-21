@@ -27,7 +27,8 @@
           <input class="form-control" formControlName="id" placeholder="Enter Contract ID" required
                  type="text">
           <div
-            *ngIf="contractForm.controls.id?.invalid&&(contractForm.controls.id?.dirty || contractForm.controls.id?.touched || submit)">
+            *ngIf="contractForm.controls.id?.invalid&&(contractForm.controls.id?.dirty
+            || contractForm.controls.id?.touched || submit)">
             <div *ngIf="contractForm.controls.id?.errors.required">
               <small class="form-text text-muted">Contract ID can not bank</small>
             </div>
@@ -42,9 +43,16 @@
         <div class="form-group">
           <!--                    <input class="form-control" name="start-date" placeholder="Enter Start Date" required-->
           <!--                           type="date">-->
-          <input placeholder="Start Date" formControlName="startDate" class="form-control" type="text" onfocus="(this.type='date')">
+          <input placeholder="Start Date" formControlName="startDate" class="form-control"
+                 type="text" onfocus="(this.type='date')">
+          <div *ngIf="(contractForm.errors?.startDate) &&(contractForm.controls.startDate?.dirty
+            || contractForm.controls.startDate?.touched || submit)">
+            <small *ngIf="contractForm.errors?.startDate" class="form-text text-muted">Date must be in the
+              future </small>
+          </div>
           <div
-            *ngIf="contractForm.controls.startDate?.invalid&&(contractForm.controls.startDate?.dirty || contractForm.controls.startDate?.touched || submit)">
+            *ngIf="contractForm.controls.startDate?.invalid&&(contractForm.controls.startDate?.dirty
+            || contractForm.controls.startDate?.touched || submit)">
             <div *ngIf="contractForm.controls.startDate?.errors.required">
               <small class="form-text text-muted">Start Date can not bank</small>
             </div>
@@ -58,9 +66,20 @@
         <div class="form-group">
           <!--                    <input class="form-control" name="end-date" placeholder="Enter End Date" required-->
           <!--                           type="date">-->
-          <input placeholder="End Date" formControlName="endDate" class="form-control" type="text" onfocus="(this.type='date')">
+          <input placeholder="End Date" formControlName="endDate" class="form-control" type="text"
+                 onfocus="(this.type='date')">
+
+          <div *ngIf="(contractForm.errors?.endDate || contractForm.errors?.startEndDate) &&(contractForm.controls.endDate?.dirty
+            || contractForm.controls.endDate?.touched || submit)">
+            <small *ngIf="contractForm.errors?.endDate" class="form-text text-muted">Date must be in the
+              future </small>
+            <small *ngIf="contractForm.errors?.startEndDate" class="form-text text-muted">End date is after the Start
+              date </small>
+          </div>
+
           <div
-            *ngIf="contractForm.controls.endDate?.invalid&&(contractForm.controls.endDate?.dirty || contractForm.controls.endDate?.touched || submit)">
+            *ngIf="contractForm.controls.endDate?.invalid&&(contractForm.controls.endDate?.dirty
+            || contractForm.controls.endDate?.touched || submit)">
             <div *ngIf="contractForm.controls.endDate?.errors.required">
               <small class="form-text text-muted">End Date can not bank</small>
             </div>
@@ -68,7 +87,6 @@
               <small class="form-text text-muted">Invalid End Date</small>
             </div>
           </div>
-
         </div>
       </div>
       <div class="col-lg-3  gutters-19">
@@ -76,7 +94,8 @@
           <input class="form-control" formControlName="deposit" placeholder="Enter Deposit" required
                  type="number">
           <div
-            *ngIf="contractForm.controls.deposit?.invalid&&(contractForm.controls.deposit?.dirty || contractForm.controls.deposit?.touched || submit)">
+            *ngIf="contractForm.controls.deposit?.invalid&&(contractForm.controls.deposit?.dirty
+            || contractForm.controls.deposit?.touched || submit)">
             <div *ngIf="contractForm.controls.deposit?.errors.required">
               <small class="form-text text-muted">Deposit can not bank</small>
             </div>
@@ -94,7 +113,8 @@
           <input class="form-control" formControlName="totalMoney" placeholder="Enter Total Money" required
                  type="number">
           <div
-            *ngIf="contractForm.controls.totalMoney?.invalid&&(contractForm.controls.totalMoney?.dirty || contractForm.controls.totalMoney?.touched || submit)">
+            *ngIf="contractForm.controls.totalMoney?.invalid&&(contractForm.controls.totalMoney?.dirty
+            || contractForm.controls.totalMoney?.touched || submit)">
             <div *ngIf="contractForm.controls.totalMoney?.errors.required">
               <small class="form-text text-muted">Total Money can not bank</small>
             </div>
@@ -109,11 +129,12 @@
         <div class="form-group">
           <div class="form-select-custom">
             <select class="form-control" formControlName="customer">
-              <option disabled  value="">Choose Customer</option>
-              <option [ngValue]="customer" *ngFor="let customer of customers">{{customer.name}}</option>
+              <option disabled value="">Choose Customer</option>
+              <option [ngValue]="customer" *ngFor="let customer of customers">{{customer.customerName}}</option>
             </select>
             <div
-              *ngIf="contractForm.controls.customer?.invalid&&(contractForm.controls.customer?.dirty || contractForm.controls.customer?.touched || submit)">
+              *ngIf="contractForm.controls.customer?.invalid&&(contractForm.controls.customer?.dirty
+              || contractForm.controls.customer?.touched || submit)">
               <div *ngIf="contractForm.controls.customer?.errors.required">
                 <small class="form-text text-muted">Customer can not bank</small>
               </div>
@@ -126,11 +147,12 @@
           <div class="form-select-custom">
 
             <select class="" formControlName="facility">
-              <option disabled  value="">Choose Facility</option>
+              <option disabled value="">Choose Facility</option>
               <option [ngValue]="facility" *ngFor="let facility of facilities">{{facility.name}}</option>
             </select>
             <div
-              *ngIf="contractForm.controls.facility?.invalid&&(contractForm.controls.facility?.dirty || contractForm.controls.facility?.touched || submit)">
+              *ngIf="contractForm.controls.facility?.invalid&&(contractForm.controls.facility?.dirty
+              || contractForm.controls.facility?.touched || submit)">
               <div *ngIf="contractForm.controls.facility?.errors.required">
                 <small class="form-text text-muted">Facility can not bank</small>
               </div>
@@ -149,7 +171,8 @@
         </div>
         <div class="col-6">
 
-          <a [routerLink]="['/contract/list']" class="button button--cancel cancel-banner-btn text-center col-12">Cancel</a>
+          <a [routerLink]="['/contract/list']"
+             class="button button--cancel cancel-banner-btn text-center col-12">Cancel</a>
         </div>
       </div>
     </div>

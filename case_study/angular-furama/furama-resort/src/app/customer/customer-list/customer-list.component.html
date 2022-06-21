@@ -33,9 +33,11 @@
           <!--                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="ti-trash">&#xE15C;</i> <span>Delete</span></a>-->
           <!--                    </div>-->
           <div class="col-sm-6 d-flex justify-content-end">
-            <a [routerLink]="['/customer/create']" class="button button--bg-white button-form mx-2"><i class="ti-settings mr-1">&#xE147;</i> <span>Create Customer</span></a>
+            <a [routerLink]="['/customer/create']" class="button button--bg-white button-form mx-2">
+              <i class="ti-settings mr-1">&#xE147;</i> <span>Create Customer</span></a>
             <!--                        <a href="#addEmployeeModal" class="button button&#45;&#45;active button-form" data-toggle="modal"><i class="ti-settings">&#xE147;</i> <span>Add New Customer</span></a>-->
-            <a href="#deleteEmployeeModal" class="button button--bg-white button-form mx-2" data-toggle="modal"><i class="ti-trash mr-1">&#xE15C;</i> <span>Delete</span></a>
+            <a href="#deleteEmployeeModal" class="button button--bg-white button-form mx-2" data-toggle="modal">
+              <i class="ti-trash mr-1">&#xE15C;</i> <span>Delete</span></a>
           </div>
         </div>
       </div>
@@ -68,33 +70,36 @@
           <td>
             <div class="d-flex align-items-center">
               <img
-                [src]="item.image"
+                [src]="item.urlImage"
                 alt=""
                 style="width: 45px; height: 45px"
                 class="rounded-circle"
               />
               <div class="ml-3">
                 <a href="@{/customer/view/{id}(id=${customer.customerId})}">
-                  <p style="word-break: break-all;" class="fw-bold mb-1">{{item.name}}</p>
+                  <p style="word-break: break-all;" class="fw-bold mb-1">{{item.customerName}}</p>
                 </a>
-                <p class="text-muted mb-0">{{item.id}}</p>
-                <span class="badge rounded-pill badge-primary" style="background-color: #cca772">{{item.customerType.name}}</span>
+                <p class="text-muted mb-0">{{item.customerId}}</p>
+                <span class="badge rounded-pill badge-primary"
+                      style="background-color: #cca772">{{item.customerType.customerTypeName}}</span>
               </div>
             </div>
           </td>
           <td>
-            <p class="fw-normal mb-1">{{item.phone}}</p>
-            <p class="text-muted mb-0">{{item.email}}</p>
+            <p class="fw-normal mb-1">{{item.customerPhone}}</p>
+            <p class="text-muted mb-0">{{item.customerEmail}}</p>
           </td>
-          <td>{{item.birthDay|date:"dd-MM- yyyy"}}</td>
-          <td *ngIf="item.gender== 0 ">Female</td>
-          <td *ngIf="item.gender== 1 ">Male</td>
-          <td *ngIf="item.gender== -1 ">Other</td>
-          <td>{{item.idCard}}</td>
-          <td>{{item.address}}</td>
+          <td>{{item.customerBirthday|date:"dd-MM- yyyy"}}</td>
+          <td *ngIf="item.customerGender== 0 ">Female</td>
+          <td *ngIf="item.customerGender== 1 ">Male</td>
+          <td *ngIf="item.customerGender== -1 ">Other</td>
+          <td>{{item.customerIdCard}}</td>
+          <td>{{item.customerAddress}}</td>
           <td>
-            <a [routerLink]="['/customer/edit',item.id]" class="edit"><i class="ti-settings" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-            <a href="#deleteEmployeeModal" (click)="deleteModal(item.name,item.id)" class="delete" data-toggle="modal"><i class="ti-trash" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+            <a [routerLink]="['/customer/edit',item.customerId]" class="edit">
+              <i class="ti-settings" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+            <a href="#deleteEmployeeModal" (click)="deleteModal(item.customerName,item.customerId)" class="delete"
+               data-toggle="modal"><i class="ti-trash" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
           </td>
         </tr>
         </tbody>
@@ -185,11 +190,13 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
         <div class="modal-body">
-          <p>Are you sure you want to delete <span style="color: #cca772; font-weight: bold">{{customerToDelete}}</span>? </p>
+          <p>Are you sure you want to delete <span style="color: #cca772; font-weight: bold">{{customerToDelete}}</span>?
+          </p>
           <p class="text-warning"><small>This action cannot be undone.</small></p>
         </div>
         <div class="modal-footer">
-          <input (click)="deleteCustomer()" type="submit" class="button button--active button-form" data-dismiss="modal" value="Delete">
+          <input (click)="deleteCustomer()" type="submit" class="button button--active button-form" data-dismiss="modal"
+                 value="Delete">
           <input type="button" class="button button--cancel cancel-banner-btn" data-dismiss="modal" value="Cancel">
         </div>
       </form>

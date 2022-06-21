@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Facility} from "../facility";
 import {FacilityService} from "../facility.service";
+import {FacilityTypeService} from "../facility-type.service";
+import {FacilityType} from "../facility-type";
 
 declare let threeDotForFacility: any;
 
@@ -14,14 +16,16 @@ export class FacilityListComponent implements OnInit {
   nameToDelete: string;
   idToDelete: string;
   p: number = 1;
+  facilityTypes: FacilityType[];
 
-  constructor(private facilityService: FacilityService) {
+  constructor(private facilityService: FacilityService, private facilityTypeService:FacilityTypeService) {
   }
 
 
   ngOnInit(): void {
     new threeDotForFacility();
     this.getAll();
+    this.getFacilityTypeList()
   }
 
   getAll() {
@@ -41,5 +45,20 @@ export class FacilityListComponent implements OnInit {
       this.ngOnInit();
     });
     this.ngOnInit();
+  }
+
+  getFacilityTypeList(){
+    this.facilityTypeService.getAll().subscribe(facilityTypes => {
+      this.facilityTypes = facilityTypes;
+    })
+  }
+
+  searchFacility(name: HTMLInputElement, cost: HTMLInputElement, facilityType: HTMLSelectElement) {
+    console.log(name.value);
+    console.log(cost.value);
+    console.log(facilityType.value);
+    this.facilityService.search(name.value,cost.value,facilityType.value).subscribe(facilities =>{
+      this.facilities = facilities
+    })
   }
 }

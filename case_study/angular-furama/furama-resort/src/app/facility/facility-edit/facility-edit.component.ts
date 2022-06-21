@@ -29,7 +29,8 @@ export class FacilityEditComponent implements OnInit {
 
 
   constructor(private facilityService: FacilityService, private  activatedRoute: ActivatedRoute,
-              private router: Router, private facilityTypeService: FacilityTypeService, private rentTypeService: RentTypeService) {
+              private router: Router, private facilityTypeService: FacilityTypeService,
+              private rentTypeService: RentTypeService) {
   }
 
   ngOnInit(): void {
@@ -89,12 +90,17 @@ export class FacilityEditComponent implements OnInit {
     return this.facilityService.findById(id).subscribe(facility => {
       this.changeValue(facility.facilityType)
       this.facilityForm = new FormGroup({
-        id: new FormControl(facility.id, [Validators.required, Validators.pattern("^DV-\\d{4}$")]),
-        name: new FormControl(facility.name, [Validators.required, Validators.pattern("^([A-Z][a-z]*)+(\\s[A-Z][a-z]*)*$")]),
-        area: new FormControl(facility.area, [Validators.required, Validators.pattern("^\\+*\\d+$")]),
-        cost: new FormControl(facility.cost, [Validators.required, Validators.pattern("^\\+*\\d+$")]),
+        id: new FormControl(facility.id, [Validators.required,
+          Validators.pattern("^DV-\\d{4}$")]),
+        name: new FormControl(facility.name, [Validators.required,
+          Validators.pattern("^([A-Z][a-z]*)+(\\s[A-Z][a-z]*)*$")]),
+        area: new FormControl(facility.area, [Validators.required,
+          Validators.pattern("^\\+*\\d+$")]),
+        cost: new FormControl(facility.cost, [Validators.required,
+          Validators.pattern("^\\+*\\d+$")]),
         image: new FormControl(facility.image, [Validators.required]),
-        maxPeople: new FormControl(facility.maxPeople, [Validators.required, Validators.pattern("^\\+*\\d+$")]),
+        maxPeople: new FormControl(facility.maxPeople, [Validators.required,
+          Validators.pattern("^\\+*\\d+$")]),
         standardRoom: new FormControl(facility.standardRoom, [Validators.required]),
         rentType: new FormControl(facility.rentType, [Validators.required]),
         facilityType: new FormControl(facility.facilityType, [Validators.required]),

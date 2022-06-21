@@ -1,0 +1,215 @@
+<!-- ================ start banner area ================= -->
+<section class="contact-banner-area" id="contact">
+  <div class="container h-100">
+    <div class="contact-banner">
+      <div class="text-center">
+        <h1>Bus List</h1>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li aria-current="page" class="breadcrumb-item active">Bus List</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================ end banner area ================= -->
+
+<!-- ================ start banner form ================= -->
+
+<form class="form-search form-search-position accomodation">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 gutters-19">
+        <div class="form-group">
+          <div class="form-select-custom">
+            <select #from>
+              <option value="">Choose Place From</option>
+              <option [value]="type.id" *ngFor="let type of placeList">{{type.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 gutters-19">
+        <div class="form-group">
+          <div class="form-select-custom">
+            <select #to>
+              <option value="">Choose Place To</option>
+              <option [value]="type.id" *ngFor="let type of placeList">{{type.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2 gutters-19">
+        <div class="form-group">
+          <button class="button button--active button-form" type="button"
+                  (click)="searchBus(from,to)">Search</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+<!-- ================ end banner form ================= -->
+
+
+
+<!-- ================ start form area ================= -->
+
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h2 style="color: white">Bus List at Da Nang Center Station</h2>
+          </div>
+          <!--                    <div class="col-sm-6">-->
+          <!--                        <a href="create-customer.html" class="btn btn-primary"><i class="ti-settings">&#xE147;</i> <span>Create Customer</span></a>-->
+          <!--                        <a href="#addEmployeeModal" class="btn btn-primary" data-toggle="modal"><i class="ti-settings">&#xE147;</i> <span>Add New Customer</span></a>-->
+          <!--                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="ti-trash">&#xE15C;</i> <span>Delete</span></a>-->
+          <!--                    </div>-->
+          <div class="col-sm-6 d-flex justify-content-end">
+            <a [routerLink]="['/create']" class="button button--bg-white button-form mx-2">
+              <i class="ti-settings mr-1">&#xE147;</i> <span>Create Bus</span></a>
+          </div>
+        </div>
+      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+          <th >ID</th>
+          <th >Number Control</th>
+          <th >Type</th>
+          <th >Owner</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of busList | paginate : { itemsPerPage: 5, currentPage: p }; index as i">
+          <td>{{item.id}}</td>
+          <td>{{item.numberControl}}</td>
+          <td>{{item.type}}</td>
+          <td>{{item.owner}}</td>
+          <td>{{item.placeFrom.name}}</td>
+          <td>{{item.placeTo.name}}</td>
+          <td>{{item.phone}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.startTime}}</td>
+          <td>{{item.endTime}}</td>
+          <td>
+            <a [routerLink]="['/edit',item.id]" class="edit">
+              <i class="ti-settings" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+            <a href="#deleteEmployeeModal" (click)="deleteModal(item.id, item.numberControl)" class="delete"
+               data-toggle="modal"><i class="ti-trash" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div style="justify-content: space-around;display: flex;">
+        <pagination-controls (pageChange)="p = $event" class="page-item"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Add Modal HTML -->
+<div id="addEmployeeModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+          <h4 class="modal-title">Add Employee</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <textarea class="form-control" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="text" class="form-control" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+          <input type="submit" class="btn btn-success" value="Add">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Edit Modal HTML -->
+<div id="editEmployeeModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Employee</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <textarea class="form-control" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="text" class="form-control" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+          <input type="submit" class="btn btn-info" value="Save">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Delete Modal HTML -->
+<div id="deleteEmployeeModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header">
+          <h4 class="modal-title">Confirm</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete Bus have number control is <span style="color: #cca772; font-weight: bold">{{numberControlToDelete}}</span>?
+          </p>
+          <p class="text-warning"><small>This action cannot be undone.</small></p>
+        </div>
+        <div class="modal-footer">
+          <input (click)="deleteEstate()" type="submit" class="button button--active button-form" data-dismiss="modal"
+                 value="Delete">
+          <input type="button" class="button button--cancel cancel-banner-btn" data-dismiss="modal" value="Cancel">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- ================ end form area ================= -->

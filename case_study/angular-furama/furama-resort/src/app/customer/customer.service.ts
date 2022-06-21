@@ -5,6 +5,7 @@ import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 
 const API_URL = `${environment.apiUrl}`;
+const SPRING_URL = 'http://localhost:8080';
 
 @Injectable({
   providedIn: 'root'
@@ -15,22 +16,22 @@ export class CustomerService {
 
 
   getAll(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(API_URL + '/customers');
+    return this.http.get<Customer[]>(SPRING_URL +'/customerRest/customers');
   }
 
   saveCustomer(customer): Observable<Customer> {
-    return this.http.post<Customer>(API_URL + '/customers', customer);
+    return this.http.post<Customer>( SPRING_URL+ '/customerRest/customers', customer);
   }
 
   findById(id: string): Observable<Customer> {
-    return this.http.get<Customer>(`${API_URL}/customers/${id}`);
+    return this.http.get<Customer>(`${SPRING_URL}/customerRest/customers/${id}`);
   }
 
   updateCustomer(customer: Customer): Observable<Customer> {
-    return this.http.put<Customer>(`${API_URL}/customers/${customer.id}`, customer);
+    return this.http.put<Customer>(`${SPRING_URL}/customerRest/customers/${customer.customerId}`, customer);
   }
 
-  deleteCustomer(id: string): Observable<Customer> {
-    return this.http.delete<Customer>(`${API_URL}/customers/${id}`);
+  deleteCustomer(id: string): Observable<any> {
+    return this.http.delete<any>(`${SPRING_URL}/customerRest/customers/${id}`);
   }
 }

@@ -1,0 +1,190 @@
+<!-- ================ start banner area ================= -->
+<section class="contact-banner-area" id="contact">
+  <div class="container h-100">
+    <div class="contact-banner">
+      <div class="text-center">
+        <h1>Create Bus</h1>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li aria-current="page" class="breadcrumb-item active">Create Bus</li>
+          </ol>
+          <a [routerLink]="['/list']">Back Bus List</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================ end banner area ================= -->
+
+
+<!-- ================ start form area ================= -->
+<form class="form-search form-search-position" [formGroup]="busForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="row">
+      <div class="">
+        <div class="form-group">
+          <input class="form-control" type="hidden" formControlName="id" readonly>
+        </div>
+      </div>
+      <div class="col-lg-3 gutters-19">
+        <div class="form-group">
+          <input class="form-control" required type="text" placeholder="Enter Number Control"
+                 formControlName="numberControl">
+          <div
+            *ngIf="busForm.controls.numberControl?.invalid&&(busForm.controls.numberControl?.dirty
+            || busForm.controls.numberControl?.touched || submit)">
+            <div *ngIf="busForm.controls.numberControl?.errors.required">
+              <small class="form-text text-muted">Number Control can not bank</small>
+            </div>
+            <div *ngIf="busForm.controls.numberControl?.errors.pattern">
+              <small class="form-text text-muted">Number Control must have 4 number</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 gutters-19">
+        <div class="form-group">
+          <input id="type" placeholder="Enter Bus Type" class="form-control" type="text"
+                 formControlName="type">
+          <div
+            *ngIf="busForm.controls.type?.invalid&&(busForm.controls.type?.dirty
+            || busForm.controls.type?.touched || submit)">
+            <div *ngIf="busForm.controls.type?.errors.required">
+              <small class="form-text text-muted">Type can not bank</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 gutters-19">
+        <div class="form-group">
+          <input id="owner" placeholder="Enter Owner" class="form-control" type="text"
+                 formControlName="owner">
+          <div
+            *ngIf="busForm.controls.owner?.invalid&&(busForm.controls.owner?.dirty
+            || busForm.controls.owner?.touched || submit)">
+            <div *ngIf="busForm.controls.owner?.errors.required">
+              <small class="form-text text-muted">Owner can not bank</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 gutters-19">
+        <div class="form-group form-select-custom">
+          <select formControlName="placeFrom" [compareWith]="compareByPlaceFromId">
+            <option disabled selected value="">Choose From</option>
+            <option [ngValue]="place" *ngFor="let place of placeList">{{place.name}}</option>
+          </select>
+
+          <div
+            *ngIf="busForm.controls.placeFrom?.invalid&&(busForm.controls.placeFrom?.dirty
+                      || busForm.controls.placeFrom?.touched|| submit)">
+            <div *ngIf="busForm.controls.placeFrom?.errors.required">
+              <small class="form-text text-muted">Place From can not bank</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 gutters-19">
+        <div class="form-group form-select-custom">
+          <select formControlName="placeTo" [compareWith]="compareByPlaceToId">
+            <option disabled selected value="">Choose To</option>
+            <option [ngValue]="place" *ngFor="let place of placeList">{{place.name}}</option>
+          </select>
+
+          <div
+            *ngIf="busForm.controls.placeTo?.invalid&&(busForm.controls.placeTo?.dirty
+                      || busForm.controls.placeTo?.touched|| submit)" >
+            <div *ngIf="busForm.controls.placeTo?.errors.required">
+              <small class="form-text text-muted">Place To can not bank</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 gutters-19">
+        <div class="form-group">
+          <input class="form-control" placeholder="Enter Phone Number" formControlName="phone"
+                 required type="text">
+          <div
+            *ngIf="busForm.controls.phone?.invalid&&(busForm.controls.phone?.dirty
+                      || busForm.controls.phone?.touched || submit)">
+            <div *ngIf="busForm.controls.phone?.errors.required">
+              <small class="form-text text-muted">Phone Number can not bank</small>
+            </div>
+            <div *ngIf="busForm.controls.phone?.errors.pattern">
+              <small class="form-text text-muted">Phone Number must be start with 090 or 093 or 097 and have 10
+                numbers</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6  gutters-19">
+        <div class="form-group">
+          <input class="form-control" placeholder="Enter Email" formControlName="email" required type="text">
+          <div
+            *ngIf="busForm.controls.email?.invalid&&(busForm.controls.email?.dirty
+                      || busForm.controls.email?.touched || submit)">
+            <div *ngIf="busForm.controls.email?.errors.required">
+              <small class="form-text text-muted">Email can not bank</small>
+            </div>
+            <div *ngIf="busForm.controls.email?.errors.email">
+              <small class="form-text text-muted">Invalid Email</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 gutters-19">
+        <div class="form-group">
+          <input class="form-control" placeholder="Enter Start Time" formControlName="startTime" required type="time">
+          <div
+            *ngIf="busForm.controls.startTime?.invalid&&(busForm.controls.startTime?.dirty
+                      || busForm.controls.startTime?.touched || submit)">
+            <div *ngIf="busForm.controls.startTime?.errors.required">
+              <small class="form-text text-muted">Start Time can not bank</small>
+            </div>
+            <div *ngIf="busForm.controls.startTime?.errors.pattern">
+              <small class="form-text text-muted">Start Time must be format hh:mm</small>
+            </div>
+            <div *ngIf="busForm.controls.startTime?.errors.timeValid">
+              <small class="form-text text-muted">Start Time must be after 5:00 AM and before 11:00 PM</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 gutters-19">
+        <div class="form-group">
+          <input class="form-control" placeholder="Enter End Time" formControlName="endTime" required type="time">
+          <div
+            *ngIf="busForm.controls.endTime?.invalid&&(busForm.controls.endTime?.dirty
+          || busForm.controls.endTime?.touched || submit)">
+            <div *ngIf="busForm.controls.endTime?.errors.required">
+              <small class="form-text text-muted">End Time can not bank</small>
+            </div>
+            <div *ngIf="busForm.controls.endTime?.errors.pattern">
+              <small class="form-text text-muted">End Time must be format hh:mm</small>
+            </div>
+            <div *ngIf="busForm.controls.endTime?.errors.timeValid">
+              <small class="form-text text-muted">End Time must be after 5:00 AM and before 11:00 PM</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-6">
+
+        <button class="button button-form button--active" type="submit">Save</button>
+      </div>
+      <div class="col-6">
+        <a [routerLink]="['/list']"
+           class="button button--cancel cancel-banner-btn text-center col-12">Cancel</a>
+      </div>
+    </div>
+  </div>
+</form>
+<!-- ================ end form area ================= -->

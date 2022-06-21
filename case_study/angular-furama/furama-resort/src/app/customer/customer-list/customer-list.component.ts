@@ -34,7 +34,9 @@ export class CustomerListComponent implements OnInit {
 
   deleteCustomer() {
     this.customerService.deleteCustomer(this.idToDelete).subscribe(() => {
-        this.customerService.deleteCustomer(this.idToDelete);
+      }, () => {
+      },
+      () => {
         this.ngOnInit();
       }
     );

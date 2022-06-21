@@ -38,20 +38,20 @@ export class CustomerEditComponent implements OnInit {
   getCustomerUpdate(id: string) {
     return this.customerService.findById(id).subscribe(customer => {
       this.customerForm = new FormGroup({
-          id: new FormControl(customer.id, [Validators.required,
+        customerId: new FormControl(customer.customerId, [Validators.required,
             Validators.pattern("^KH-\\d{4}$")]),
-          name: new FormControl(customer.name, [Validators.required]),
-          birthDay: new FormControl(customer.birthDay, [Validators.required,
+        customerName: new FormControl(customer.customerName, [Validators.required]),
+        customerBirthday: new FormControl(customer.customerBirthday, [Validators.required,
             Validators.pattern("^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$")]),
-          gender: new FormControl(customer.gender, [Validators.required]),
-          idCard: new FormControl(customer.idCard, [Validators.required,
+        customerGender: new FormControl(customer.customerGender, [Validators.required]),
+        customerIdCard: new FormControl(customer.customerIdCard, [Validators.required,
             Validators.pattern("^\\d{9}|\\d{12}$")]),
-          phone: new FormControl(customer.phone, [Validators.required,
+        customerPhone: new FormControl(customer.customerPhone, [Validators.required,
             Validators.pattern("^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)\\d{7}$")]),
-          email: new FormControl(customer.email, [Validators.required, Validators.email]),
-          address: new FormControl(customer.address, [Validators.required]),
-          image: new FormControl(customer.image, [Validators.required]),
-          customerType: new FormControl(customer.customerType, [Validators.required]),
+        customerEmail: new FormControl(customer.customerEmail, [Validators.required, Validators.email]),
+        customerAddress: new FormControl(customer.customerAddress, [Validators.required]),
+        urlImage: new FormControl(customer.urlImage, [Validators.required]),
+        customerType: new FormControl(customer.customerType, [Validators.required]),
         }
       )
     }, error => {

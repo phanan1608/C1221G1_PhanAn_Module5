@@ -1,10 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Facility} from "./facility";
-import {facilities} from "./facility-data";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
-import {Customer} from "../customer/customer";
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -23,7 +21,7 @@ export class FacilityService {
   }
 
   saveFacility(facility): Observable<Facility> {
-    return this.http.post<Facility>(API_URL + '/facilities', facility);
+    return this.http.post<Facility>(`${API_URL}/facilities`, facility);
   }
 
   findById(id: string): Observable<Facility> {
@@ -36,5 +34,11 @@ export class FacilityService {
 
   deleteFacility(id: string): Observable<Facility> {
     return this.http.delete<Facility>(`${API_URL}/facilities/${id}`);
+  }
+
+  search(name: string, cost: string, facilityType: string): Observable<Facility[]> {
+    return this.http.get<Facility[]>(`${API_URL}/facilities?name_like=${name}&cost_like=${cost}&facilityType.id_like=${facilityType}`,);
+
+
   }
 }

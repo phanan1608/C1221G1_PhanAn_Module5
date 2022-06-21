@@ -24,9 +24,10 @@
     <div class="row">
       <div class="">
         <div class="form-group">
-          <input class="form-control" readonly formControlName="id" placeholder="Enter Facility Code" required type="hidden">
+          <input class="form-control" readonly formControlName="id" placeholder="Enter Facility Code" type="hidden">
           <div
-            *ngIf="facilityForm.controls.id?.invalid&&(facilityForm.controls.id?.dirty || facilityForm.controls.id?.touched || submit)">
+            *ngIf="facilityForm.controls.id?.invalid&&(facilityForm.controls.id?.dirty
+            || facilityForm.controls.id?.touched || submit)">
             <div *ngIf="facilityForm.controls.id?.errors.required">
               <small class="form-text text-muted">Code can not bank</small>
             </div>
@@ -41,7 +42,8 @@
         <div class="form-group">
           <input class="form-control" formControlName="name" placeholder="Enter Facility Name" required type="text">
           <div
-            *ngIf="facilityForm.controls.name?.invalid&&(facilityForm.controls.name?.dirty || facilityForm.controls.name?.touched || submit)">
+            *ngIf="facilityForm.controls.name?.invalid&&(facilityForm.controls.name?.dirty
+            || facilityForm.controls.name?.touched || submit)">
             <div *ngIf="facilityForm.controls.name?.errors.required">
               <small class="form-text text-muted">Facility Name can not bank</small>
             </div>
@@ -55,7 +57,8 @@
         <div class="form-group">
           <input class="form-control" formControlName="cost" placeholder="Enter Cost" required type="text">
           <div
-            *ngIf="facilityForm.controls.cost?.invalid&&(facilityForm.controls.cost?.dirty || facilityForm.controls.cost?.touched || submit)">
+            *ngIf="facilityForm.controls.cost?.invalid&&(facilityForm.controls.cost?.dirty
+            || facilityForm.controls.cost?.touched || submit)">
             <div *ngIf="facilityForm.controls.cost?.errors.required">
               <small class="form-text text-muted">Cost can not bank</small>
             </div>
@@ -76,7 +79,8 @@
             <option [ngValue]="type" *ngFor="let type of rentTypes">{{type.name}}</option>
           </select>
           <div
-            *ngIf="facilityForm.controls.rentType?.invalid&&(facilityForm.controls.rentType?.dirty || facilityForm.controls.rentType?.touched || submit)">
+            *ngIf="facilityForm.controls.rentType?.invalid&&(facilityForm.controls.rentType?.dirty
+            || facilityForm.controls.rentType?.touched || submit)">
             <div *ngIf="facilityForm.controls.rentType?.errors.required">
               <small class="form-text text-muted">Rent Type can not bank</small>
             </div>
@@ -93,7 +97,8 @@
             <option value="3">President</option>
           </select>
           <div
-            *ngIf="facilityForm.controls.standardRoom?.invalid&&(facilityForm.controls.standardRoom?.dirty || facilityForm.controls.standardRoom?.touched || submit)">
+            *ngIf="facilityForm.controls.standardRoom?.invalid&&(facilityForm.controls.standardRoom?.dirty
+            || facilityForm.controls.standardRoom?.touched || submit)">
             <div *ngIf="facilityForm.controls.standardRoom?.errors.required">
               <small class="form-text text-muted">Standard Room can not bank</small>
             </div>
@@ -108,7 +113,8 @@
         <div class="form-group">
           <input class="form-control" formControlName="area" placeholder="Enter Area" required type="text">
           <div
-            *ngIf="facilityForm.controls.area?.invalid&&(facilityForm.controls.area?.dirty || facilityForm.controls.area?.touched || submit)">
+            *ngIf="facilityForm.controls.area?.invalid&&(facilityForm.controls.area?.dirty
+            || facilityForm.controls.area?.touched || submit)">
             <div *ngIf="facilityForm.controls.area?.errors.required">
               <small class="form-text text-muted">Area can not bank</small>
             </div>
@@ -123,7 +129,8 @@
         <div class="form-group">
           <input class="form-control" formControlName="maxPeople" placeholder="Enter People" required type="text">
           <div
-            *ngIf="facilityForm.controls.maxPeople?.invalid&&(facilityForm.controls.maxPeople?.dirty || facilityForm.controls.maxPeople?.touched || submit)">
+            *ngIf="facilityForm.controls.maxPeople?.invalid&&(facilityForm.controls.maxPeople?.dirty
+            || facilityForm.controls.maxPeople?.touched || submit)">
             <div *ngIf="facilityForm.controls.maxPeople?.errors.required">
               <small class="form-text text-muted">People can not bank</small>
             </div>
@@ -140,7 +147,8 @@
         <div class="form-group">
           <input class="form-control" formControlName="image" placeholder="Enter URL Image" required type="text">
           <div
-            *ngIf="facilityForm.controls.image?.invalid&&(facilityForm.controls.image?.dirty || facilityForm.controls.image?.touched || submit)">
+            *ngIf="facilityForm.controls.image?.invalid&&(facilityForm.controls.image?.dirty
+            || facilityForm.controls.image?.touched || submit)">
             <div *ngIf="facilityForm.controls.image?.errors.required">
               <small class="form-text text-muted">Image can not bank</small>
             </div>
@@ -161,7 +169,8 @@
             <option [ngValue]="type" *ngFor="let type of facilityTypes">{{type.name}}</option>
           </select>
           <div
-            *ngIf="facilityForm.controls.facilityType?.invalid&&(facilityForm.controls.facilityType?.dirty || facilityForm.controls.facilityType?.touched)">
+            *ngIf="facilityForm.controls.facilityType?.invalid&&(facilityForm.controls.facilityType?.dirty
+            || facilityForm.controls.facilityType?.touched)">
             <div *ngIf="facilityForm.controls.facilityType?.errors.required">
               <small class="form-text text-muted">Facility Type can not bank</small>
             </div>
@@ -175,17 +184,20 @@
     <div class="row" [hidden]="villa" id="villa_items">
       <div class="col-sm gutters-19">
         <div class="form-group">
-          <input class="form-control" formControlName="poolArea" name="url" placeholder="Enter Pool Area" required type="text">
+          <input class="form-control" formControlName="poolArea" name="url"
+                 placeholder="Enter Pool Area" type="text">
         </div>
       </div>
       <div class="col-sm gutters-19">
         <div class="form-group">
-          <input class="form-control" formControlName="numberOfFloors" name="url" placeholder="Enter Number Floor" required type="text">
+          <input class="form-control" formControlName="numberOfFloors" name="url"
+                 placeholder="Enter Number Floor"  type="text">
         </div>
       </div>
       <div class="col-lg gutters-19">
         <div class="form-group">
-          <input class="form-control" formControlName="descriptionOtherConvenience" name="url" placeholder="Enter Description" required type="text">
+          <input class="form-control" formControlName="descriptionOtherConvenience"
+                 name="url" placeholder="Enter Description"  type="text">
         </div>
       </div>
     </div>
@@ -194,12 +206,14 @@
     <div class="row" [hidden]="house" id="house_items">
       <div class="col-sm gutters-19">
         <div class="form-group">
-          <input class="form-control" formControlName="numberOfFloors" name="url" placeholder="Enter Number Floor" required type="text">
+          <input class="form-control" formControlName="numberOfFloors" name="url"
+                 placeholder="Enter Number Floor"  type="text">
         </div>
       </div>
       <div class="col-lg gutters-19">
         <div class="form-group">
-          <input class="form-control" formControlName="descriptionOtherConvenience" name="url" placeholder="Enter Description" required type="text">
+          <input class="form-control" formControlName="descriptionOtherConvenience"
+                 name="url" placeholder="Enter Description"  type="text">
         </div>
       </div>
     </div>
@@ -208,7 +222,8 @@
     <div class="row" [hidden]="room" id="room_items">
       <div class="col-lg gutters-19">
         <div class="form-group">
-          <input class="form-control" formControlName="descriptionOtherConvenience" name="url" placeholder="Enter Description" required type="text">
+          <input class="form-control" formControlName="descriptionOtherConvenience" name="url"
+                 placeholder="Enter Description" required type="text">
         </div>
       </div>
     </div>
