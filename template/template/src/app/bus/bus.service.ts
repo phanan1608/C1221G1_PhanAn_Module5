@@ -17,12 +17,13 @@ export class BusService {
   // getAll(): Observable<Bus[]> {
   //   return this.http.get<Bus[]>(API_URL);
   // }
-  getAll(): Observable<any> {
-    return this.http.get<any>(`${API_URL}`);
+  getAll(request): Observable<any> {
+    const params = request
+    return this.http.get<any>(`${API_URL}`,{params});
   }
 
-  getAllAndSearch(from:string, to:string): Observable<any> {
-    return this.http.get<any>(`${API_URL}?from=${from}&to=${to}`);
+  getAllAndSearch(from:string, to:string, numberControl:string): Observable<any> {
+    return this.http.get<any>(`${API_URL}?from=${from}&to=${to}&numberControl_like=${numberControl}`);
   }
 
   saveBus(bus): Observable<Bus> {

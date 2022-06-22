@@ -5,5 +5,5 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface ITransportService extends ICrudService<Transport> {
-    Page<Transport> findAllAndSearch(Integer from, Integer to, Pageable pageable);
+    Page<Transport> findAllAndSearch(String numberControl,Integer from, Integer to, Pageable pageable);
 }

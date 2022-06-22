@@ -32,11 +32,13 @@ public class RestTransportController {
     @GetMapping(value = "")
     public ResponseEntity<Page<Transport>> getAll(@RequestParam Optional<Integer> from,
                                                   @RequestParam Optional<Integer> to,
+                                                  @RequestParam Optional<String> numberControl,
                                                   @PageableDefault(value = 5) Pageable pageable) {
 //        Pageable pageable = PageRequest.of(page, size);
         Integer fromValue = from.orElse(-1);
         Integer toValue = to.orElse(-1);
-        Page<Transport> transports = this.transportService.findAllAndSearch(fromValue, toValue, pageable);
+        String numberControlValue = numberControl.orElse("");
+        Page<Transport> transports = this.transportService.findAllAndSearch(numberControlValue,fromValue, toValue, pageable);
         return new ResponseEntity<>(transports, HttpStatus.OK);
     }
 

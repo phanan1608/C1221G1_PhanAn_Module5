@@ -7,8 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ITransportRepository extends JpaRepository<Transport, Integer> {
-    Page<Transport> findAllByPlaceFrom_IdAndPlaceTo_Id(Integer placeFrom_id, Integer placeTo_id, Pageable pageable);
-    Page<Transport> findAllByPlaceTo_Id(Integer placeTo_id, Pageable pageable);
-    Page<Transport> findAllByPlaceFrom_Id(Integer placeFrom_id, Pageable pageable);
-    Page<Transport> findAll(Pageable pageable);
+    Page<Transport> findAllByNumberControlContainingAndPlaceFrom_IdAndPlaceTo_Id(String numberControl, Integer placeFrom_id, Integer placeTo_id, Pageable pageable);
+    Page<Transport> findAllByNumberControlContainingAndPlaceTo_Id(String numberControl, Integer placeTo_id, Pageable pageable);
+    Page<Transport> findAllByNumberControlContainingAndPlaceFrom_Id(String numberControl, Integer placeFrom_id, Pageable pageable);
+    Page<Transport> findAllByNumberControlContaining(String numberControl, Pageable pageable);
 }

@@ -43,15 +43,15 @@ public class TransportService implements ITransportService {
     }
 
     @Override
-    public Page<Transport> findAllAndSearch(Integer from, Integer to, Pageable pageable) {
+    public Page<Transport> findAllAndSearch(String numberControl,Integer from, Integer to, Pageable pageable) {
         if (from == -1 && to == -1) {
-            return this.transportRepository.findAll(pageable);
+            return this.transportRepository.findAllByNumberControlContaining(numberControl, pageable);
         } else if (from == -1) {
-            return this.transportRepository.findAllByPlaceTo_Id(to, pageable);
+            return this.transportRepository.findAllByNumberControlContainingAndPlaceTo_Id(numberControl,to, pageable);
         } else if (to == -1) {
-            return this.transportRepository.findAllByPlaceFrom_Id(from, pageable);
+            return this.transportRepository.findAllByNumberControlContainingAndPlaceFrom_Id(numberControl,from, pageable);
         } else {
-            return this.transportRepository.findAllByPlaceFrom_IdAndPlaceTo_Id(from, to, pageable);
+            return this.transportRepository.findAllByNumberControlContainingAndPlaceFrom_IdAndPlaceTo_Id(numberControl,from, to, pageable);
         }
     }
 }

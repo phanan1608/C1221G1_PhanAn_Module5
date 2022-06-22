@@ -15,13 +15,17 @@ export class BusListComponent implements OnInit {
   numberControlToDelete: number;
   idToDelete: number;
   p: number;
-
+  currentPage: number;
+  totalPages: number;
+  from: string = '-1';
+  to: string = '-1';
+  numberControl: string = '';
 
   constructor(private busService: BusService, private placeService: PlaceService) {
   }
 
   ngOnInit(): void {
-    this.getAllBus();
+    this.getAllBus({page: 0, size: 5});
     this.getPlaceList();
   }
 
@@ -31,13 +35,50 @@ export class BusListComponent implements OnInit {
     });
   }
 
-  getAllBus() {
-    this.busService.getAll().subscribe(
+  getAllBus(request) {
+    this.busService.getAll(request).subscribe(
       data => {
         console.log(data);
         this.busList = data.content;
+        this.currentPage = data.number;
+        this.totalPages = data.totalPages;
+        console.log(this.currentPage);
+        console.log(this.totalPages);
       }
     );
+  }
+
+  searchBus(from: HTMLSelectElement, to: HTMLSelectElement, numberControl: HTMLInputElement) {
+    this.from = from.value;
+    this.to = to.value;
+    this.numberControl = numberControl.value;
+    this.getAllBus({page: 0, size: 5, from: this.from, to: this.to, numberControl: this.numberControl});
+  }
+
+  previousPage() {
+    const request = {};
+    if ((this.currentPage) > 0) {
+      console.log(request);
+      request['page'] = this.currentPage - 1;
+      request['size'] = 5;
+      request['from'] = this.from;
+      request['to'] = this.to;
+      request['numberControl'] = this.numberControl;
+      this.getAllBus(request);
+    }
+  }
+
+  nextPage() {
+    const request = {};
+    if ((this.currentPage + 1) < this.totalPages) {
+      console.log(request);
+      request['page'] = this.currentPage + 1;
+      request['size'] = 5;
+      request['from'] = this.from;
+      request['to'] = this.to;
+      request['numberControl'] = this.numberControl;
+      this.getAllBus(request);
+    }
   }
 
   deleteModal(id: any, code: number) {
@@ -54,11 +95,5 @@ export class BusListComponent implements OnInit {
         this.ngOnInit();
       }
     );
-  }
-
-  searchBus(from: HTMLSelectElement, to: HTMLSelectElement) {
-      this.busService.getAllAndSearch(from.value,to.value).subscribe(data =>{
-        this.busList = data.content;
-      })
   }
 }
